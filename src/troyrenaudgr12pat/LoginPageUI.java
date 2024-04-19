@@ -48,8 +48,13 @@ public class LoginPageUI extends javax.swing.JFrame {
         passwordLbl.setText("Password:");
 
         confirmBtn.setText("Confirm");
+        confirmBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmBtnActionPerformed(evt);
+            }
+        });
 
-        passwordPF.setText("jPasswordField1");
+        passwordPF.setText("jPasswordFi1");
 
         showPasswordCB.setText("Show Password");
 
@@ -68,11 +73,11 @@ public class LoginPageUI extends javax.swing.JFrame {
                             .addComponent(passwordLbl)
                             .addComponent(usernameLbl))
                         .addGap(31, 31, 31)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(passwordPF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(showPasswordCB))
-                        .addGap(0, 66, Short.MAX_VALUE)))
+                            .addComponent(showPasswordCB, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(passwordPF))
+                        .addGap(0, 77, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(133, 133, 133)
@@ -101,6 +106,12 @@ public class LoginPageUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
+        CustomerSelectionUI cs = new CustomerSelectionUI();
+        cs.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_confirmBtnActionPerformed
 
     /**
      * @param args the command line arguments

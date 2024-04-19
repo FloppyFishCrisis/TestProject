@@ -42,6 +42,11 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
 
         previousCustomerBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         previousCustomerBtn.setText("Previous Customer");
+        previousCustomerBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                previousCustomerBtnActionPerformed(evt);
+            }
+        });
 
         backBtn.setText("Back");
 
@@ -77,8 +82,16 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void newCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCustomerBtnActionPerformed
-        // TODO add your handling code here:
+        NewCustomerUI nc = new NewCustomerUI();
+        nc.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_newCustomerBtnActionPerformed
+
+    private void previousCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousCustomerBtnActionPerformed
+        PreviousCustomerUI pc = new PreviousCustomerUI();
+        pc.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_previousCustomerBtnActionPerformed
 
     /**
      * @param args the command line arguments

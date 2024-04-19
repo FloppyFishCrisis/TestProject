@@ -36,12 +36,12 @@
                           <Component id="usernameLbl" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
                           <Component id="usernameTF" min="-2" max="-2" attributes="0"/>
-                          <Component id="passwordPF" min="-2" max="-2" attributes="0"/>
-                          <Component id="showPasswordCB" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="showPasswordCB" alignment="0" max="32767" attributes="0"/>
+                          <Component id="passwordPF" alignment="0" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="66" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="77" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -111,10 +111,13 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Confirm"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmBtnActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JPasswordField" name="passwordPF">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jPasswordField1"/>
+        <Property name="text" type="java.lang.String" value="jPasswordFi1"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JCheckBox" name="showPasswordCB">

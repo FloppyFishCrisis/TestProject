@@ -39,6 +39,11 @@ public class LandingPageUI extends javax.swing.JFrame {
         addProductBtn.setText("Add New Product");
 
         modifyProductBtn.setText("Modify Product");
+        modifyProductBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyProductBtnActionPerformed(evt);
+            }
+        });
 
         manageTabsBtn.setText("Manage Tabs");
         manageTabsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -89,6 +94,12 @@ public class LandingPageUI extends javax.swing.JFrame {
     private void manageTabsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageTabsBtnActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_manageTabsBtnActionPerformed
+
+    private void modifyProductBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyProductBtnActionPerformed
+        ModifyProductUI mp = new ModifyProductUI();
+        mp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_modifyProductBtnActionPerformed
 
     /**
      * @param args the command line arguments
