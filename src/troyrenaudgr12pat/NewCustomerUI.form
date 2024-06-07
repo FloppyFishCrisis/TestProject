@@ -30,19 +30,19 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="nameLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="surnameLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="cellphoneNumberLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerNameLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerSurnameLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerCellphoneNumberLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerEmailLbl" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="emailTF" min="-2" max="-2" attributes="0"/>
-                  <Component id="cellphoneNumberTF" min="-2" max="-2" attributes="0"/>
-                  <Component id="surnameTF" min="-2" max="-2" attributes="0"/>
-                  <Component id="nameTF" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="emailTF" alignment="0" pref="98" max="32767" attributes="0"/>
+                  <Component id="cellphoneNumberTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="surnameTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="firstnameTF" alignment="0" max="32767" attributes="0"/>
               </Group>
-              <EmptySpace pref="92" max="32767" attributes="0"/>
+              <EmptySpace pref="54" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -56,22 +56,22 @@
               <Component id="backBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="nameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="nameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerNameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="firstnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="surnameLbl" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerSurnameLbl" min="-2" max="-2" attributes="0"/>
                   <Component id="surnameTF" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="cellphoneNumberLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerCellphoneNumberLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="cellphoneNumberTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerEmailLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="emailTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="96" max="32767" attributes="0"/>
@@ -89,45 +89,33 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="nameLbl">
+    <Component class="javax.swing.JLabel" name="customerNameLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="nameTF">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
+    <Component class="javax.swing.JTextField" name="firstnameTF">
     </Component>
-    <Component class="javax.swing.JLabel" name="surnameLbl">
+    <Component class="javax.swing.JLabel" name="customerSurnameLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Surname:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="surnameTF">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField2"/>
-      </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="cellphoneNumberLbl">
+    <Component class="javax.swing.JLabel" name="customerCellphoneNumberLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cellphone Number:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="cellphoneNumberTF">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField3"/>
-      </Properties>
     </Component>
-    <Component class="javax.swing.JLabel" name="jLabel4">
+    <Component class="javax.swing.JLabel" name="customerEmailLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Email:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="emailTF">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField4"/>
-      </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="confirmBtn">
       <Properties>

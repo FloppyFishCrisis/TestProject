@@ -4,17 +4,27 @@
  */
 package troyrenaudgr12pat;
 
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+import java.util.ArrayList;
+
 /**
  *
  * @author troyr
  */
 public class PreviousCustomerUI extends javax.swing.JFrame {
 
+    private ArrayList<Customer> customers;
+    private int selected = -1;
+
     /**
      * Creates new form PreviousCustomer
      */
     public PreviousCustomerUI() {
         initComponents();
+        DataHandler dh = new DataHandler();
+        customers = dh.getAllCustomers();
+        this.addTable();
     }
 
     /**
@@ -33,6 +43,8 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
         previousCustomerSelectionLbl = new javax.swing.JLabel();
         searchLbl = new javax.swing.JLabel();
         searchTF = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblCustomers = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -63,40 +75,61 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
 
         searchTF.setText("jTextField1");
 
+        tblCustomers.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "ProductID", "ProductName", "Category", "Barcode", "Price", "Quantity", "ExpiryDate"
+            }
+        ));
+        tblCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblCustomersMouseClicked(evt);
+            }
+        });
+        jScrollPane2.setViewportView(tblCustomers);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(confirmBtn))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(119, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backBtn)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(searchLbl)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(previousCustomerSelectionLbl)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(111, 111, 111))
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(36, 36, 36)
+                                .addComponent(searchLbl)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(previousCustomerSelectionLbl))
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(confirmBtn))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(backBtn)
-                .addGap(10, 10, 10)
-                .addComponent(previousCustomerSelectionLbl)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchLbl)
-                    .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(2, 2, 2)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(316, 316, 316)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(previousCustomerSelectionLbl)
+                            .addComponent(searchLbl))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(confirmBtn))
         );
 
@@ -110,10 +143,38 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
-        LandingPageUI lp = new LandingPageUI();
-        lp.setVisible(true);
-        this.dispose();
+        if (selected != -1) {
+            Customer selectedCustomer = customers.get(selected);
+            LandingPageUI lp = new LandingPageUI(selectedCustomer);
+            lp.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(this, "Please select a customer first.");
+        }
     }//GEN-LAST:event_confirmBtnActionPerformed
+
+    private void tblCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomersMouseClicked
+        selected = tblCustomers.getSelectedRow();
+    }//GEN-LAST:event_tblCustomersMouseClicked
+
+    public void addTable() {
+        DataHandler dh = new DataHandler();
+        customers = dh.getAllCustomers();
+        DefaultTableModel dtm = (DefaultTableModel) tblCustomers.getModel();
+        //DefaultTableModel dtm = new DefaultTableModel();
+        tblCustomers.setModel(dtm);
+        Object customerRow[] = new Object[5];
+        for (int i = 0; i < customers.size(); i++) {
+            customerRow[0] = "" + customers.get(i).getCustomerID();
+            customerRow[1] = "" + customers.get(i).getCustomerFirstname();
+            customerRow[2] = "" + customers.get(i).getCustomerSurname();
+            customerRow[3] = "" + customers.get(i).getCustomerCellphoneNumber();
+            customerRow[4] = "" + customers.get(i).getCustomerEmail();
+            dtm.addRow(customerRow);
+        }
+        tblCustomers.setSelectionMode(0);  // Set the selection to the first book.
+        selected = tblCustomers.getSelectedRow();  // Update the selected index.
+    }
 
     /**
      * @param args the command line arguments
@@ -155,9 +216,11 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
     private javax.swing.JButton backBtn;
     private javax.swing.JButton confirmBtn;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JList<String> previousCustomerList;
     private javax.swing.JLabel previousCustomerSelectionLbl;
     private javax.swing.JLabel searchLbl;
     private javax.swing.JTextField searchTF;
+    private javax.swing.JTable tblCustomers;
     // End of variables declaration//GEN-END:variables
 }

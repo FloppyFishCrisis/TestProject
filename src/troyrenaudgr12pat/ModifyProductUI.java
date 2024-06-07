@@ -4,8 +4,8 @@
  */
 package troyrenaudgr12pat;
 
-import java.awt.print.Book;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -15,20 +15,24 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModifyProductUI extends javax.swing.JFrame {
 
+    private ArrayList<Product> products = new ArrayList(); //declare and make space in RAM for products
+    private int selected; //Initialise 'selected'
+
     /**
      * Creates new form ModifyProductUI
      */
     public ModifyProductUI() {
         initComponents();
-        dh = new DataHandler();  // Create an instance of the BookHandler class.
+        DataHandler dh = new DataHandler();  // Initialise and create an instance of the DataHandler class.
         this.addTable();//initialises the table
+        products = dh.getAllProducts(); //initialise the ArrayList
     }
 
     private void refreshTable() {
         DefaultTableModel dtm = (DefaultTableModel) tblProducts.getModel();
         dtm.setRowCount(0);
         for (int i = 0; i < products.size(); i++) {
-            Object[] bookRow = new Object[]{
+            Object[] productRow = new Object[]{
                 products.get(i).getProductID(),
                 products.get(i).getProductName(),
                 products.get(i).getCategory(),
@@ -37,7 +41,7 @@ public class ModifyProductUI extends javax.swing.JFrame {
                 products.get(i).getQuantity(),
                 products.get(i).getExpiryDate()
             };
-            dtm.addRow(bookRow);
+            dtm.addRow(productRow);
         }
         //this code repopulated the previous data with updated data, by setting the old rows to the newly updated rows
     }
@@ -50,7 +54,7 @@ public class ModifyProductUI extends javax.swing.JFrame {
             barcodeTF.setText("" + products.get(selected).getBarcode());
             priceTF.setText("" + products.get(selected).getPrice());
             quantityTF.setText("" + products.get(selected).getQuantity());
-            ExpiryDate.setDate(products.get(selected).getExpiryDate());
+            expiryDatePicker.setDate(products.get(selected).getExpiryDate());
         }
         //helps to enter the selected rows/variable names so that it can be editted or deleted as shown in the text fields
     }
@@ -85,8 +89,8 @@ public class ModifyProductUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        btnBack.setBackground(new java.awt.Color(204, 204, 255));
         btnBack.setText("←");
+        btnBack.setBackground(new java.awt.Color(204, 204, 255));
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -111,24 +115,24 @@ public class ModifyProductUI extends javax.swing.JFrame {
 
         modifyDate.setText("Expiry Date:");
 
-        deleteButton2.setBackground(new java.awt.Color(153, 153, 255));
         deleteButton2.setText("Delete");
+        deleteButton2.setBackground(new java.awt.Color(153, 153, 255));
         deleteButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 deleteButton2ActionPerformed(evt);
             }
         });
 
-        editButton2.setBackground(new java.awt.Color(51, 153, 0));
         editButton2.setText("Edit");
+        editButton2.setBackground(new java.awt.Color(51, 153, 0));
         editButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 editButton2ActionPerformed(evt);
             }
         });
 
-        helpButton1.setBackground(new java.awt.Color(255, 153, 153));
         helpButton1.setText("Help");
+        helpButton1.setBackground(new java.awt.Color(255, 153, 153));
         helpButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 helpButton1ActionPerformed(evt);
@@ -150,7 +154,7 @@ public class ModifyProductUI extends javax.swing.JFrame {
         });
         jScrollPane2.setViewportView(tblProducts);
 
-        quantityTF.setToolTipText("ISBN Format: ISBN-XX XXX-X-XXXXX-XXX-X");
+        quantityTF.setToolTipText("Consists of 12 numbers");
 
         modifyQuantity.setText("Quantity:");
 
@@ -257,62 +261,116 @@ public class ModifyProductUI extends javax.swing.JFrame {
 
     private void deleteButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteButton2ActionPerformed
         if (selected != -1) {
-            // Delete the selected book from the ArrayList
-            Book productToDelete = products.get(selected);
-            dh.deleteProduct(productToDelete);
-            products.remove(selected);
+            // Ask for confirmation before deleting the product
+            int response = JOptionPane.showConfirmDialog(null, "Are you sure you want to delete this product?", "Confirm Deletion",
+                    JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
 
-            // Delete the selected book from the table's data model
-            DefaultTableModel dtm = (DefaultTableModel) tblProducts.getModel();
-            dtm.removeRow(selected);
+            if (response == JOptionPane.YES_OPTION) {
+                DataHandler dh = new DataHandler();
 
-            // Clear the text fields
-            productNameTF.setText("");
-            categoryTF.setText("");
-            barcodeTF.setText("");
-            priceTF.setText("");
-            quantityTF.setText("");
-            expiryDatePicker.setDate(null);
+                // Delete the selected product from the ArrayList
+                Product productToDelete = products.get(selected);
+                dh.deleteProduct(productToDelete);
+                products.remove(selected);
 
-            selected = -1; // moves through the rows if not for this code it could not account for all the rows
+                // Delete the selected product from the table's data model
+                DefaultTableModel dtm = (DefaultTableModel) tblProducts.getModel();
+                dtm.removeRow(selected);
+
+                // Clear the text fields
+                productNameTF.setText("");
+                categoryTF.setText("");
+                barcodeTF.setText("");
+                priceTF.setText("");
+                quantityTF.setText("");
+                expiryDatePicker.setDate(null);
+
+                selected = -1; // Reset the selected index
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No product selected for deletion.");
         }
         // Handle the action when the "Delete" button is clicked.
-        // It deletes the selected book from the database and refreshes the UI.
+        // It deletes the selected customer from the database and refreshes the UI.
     }//GEN-LAST:event_deleteButton2ActionPerformed
 
+    private void checksForEdit() {
+        String productName = productNameTF.getText().trim();
+        String category = categoryTF.getText().trim();
+        String barcode = barcodeTF.getText().trim();
+        String priceText = priceTF.getText().trim();
+        String quantityText = quantityTF.getText().trim();
+        // Extract text from different text fields and store it in separate String variables
+        // .trim helps .isEmpty to work by trimming spaces and seeing if values were left out
+
+        if (!isValidBarcode(barcode)) {
+            JOptionPane.showMessageDialog(null, "Invalid barcode format. Please enter a valid barcode.");
+            return;
+            // Runs the isValidBarcode code and return message if false
+        }
+
+        if (productName.isEmpty() || category.isEmpty() || barcode.isEmpty() || priceText.isEmpty() || quantityText.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "All text fields must be entered.");
+            return;
+            // Check if any of the text fields are empty
+            // This is an if statement to see what if the data will be returned true/false - and then follow up with commands like a message pop-up
+        }
+
+        // Validate the quantity
+        try {
+            int quantity = Integer.parseInt(quantityText);
+            if (quantity < 0) {
+                JOptionPane.showMessageDialog(null, "Quantity must be a non-negative number.");
+                return;
+            }
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid quantity format. Please enter a valid number.");
+            return;
+        }
+    }
+
     private void editButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButton2ActionPerformed
-//        int bookID = books.get(selected).getBookID();
-//        String titel = productNameTF.getText();
-//        String priceText = barcodeTF.getText();
-//        String author = categoryTF.getText();
-//        String isbn = priceTF.getText();
-//        boolean availability = availabilityCheckBox1.isSelected();
-//        LocalDate publicationDate = expiryDatePicker.getDate();
-//        //this code extracts information entered or selected by the user assigns them to different variables
-//
-//        // Check if the priceText is a valid number
-//        try {
-//            double price = Double.parseDouble(priceText);
-//            // If the price is a valid number, update the book
-//            dh.updateProduct(new Book(bookID, price, author, isbn, titel, availability, publicationDate));
-//            DefaultTableModel dtm = (DefaultTableModel) tblProducts.getModel();
-//            dtm.setValueAt(productName, selected, 1);
-//            dtm.setValueAt(category, selected, 2);
-//            dtm.setValueAt(publicationDate, selected, 3);
-//            dtm.setValueAt(availability, selected, 4);
-//            dtm.setValueAt(price, selected, 5);
-//            dtm.setValueAt(isbn, selected, 6);
-//            checksForEdit();
-//        } catch (NumberFormatException e) {
-//            JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a valid number.");
-//        }
-//        //this code sets/updates the older values so that they are updated immediately after clicking the edit button
-//        //makes sure price is is the right format otherwise displays message dialog
-//        //Reference: https://stackoverflow.com/questions/3179136/jtable-how-to-refresh-table-model-after-insert-delete-or-update-the-data (helped with refreshing table data)
+        int productID = products.get(selected).getProductID();
+        String productName = productNameTF.getText().trim();
+        String category = categoryTF.getText().trim();
+        String barcode = barcodeTF.getText().trim();
+        String priceText = priceTF.getText().trim();
+        String quantityText = quantityTF.getText().trim();
+        LocalDate expiryDate = expiryDatePicker.getDate();
+        // This code extracts information entered or selected by the user and assigns it to different variables
+
+        checksForEdit(); // Perform validation checks first
+
+        // If checksForEdit shows an error, it will return early and not execute the following code
+        if (productName.isEmpty() || category.isEmpty() || barcode.isEmpty() || priceText.isEmpty() || quantityText.isEmpty()) {
+            return;
+        }
+
+        DataHandler dh = new DataHandler();
+
+        // Check if the priceText is a valid number
+        try {
+            double price = Double.parseDouble(priceText);
+            int quantity = Integer.parseInt(quantityText);
+            // If the price and quantity are valid numbers, update the product
+            dh.updateProduct(new Product(productID, productName, category, barcode, price, quantity, expiryDate));
+            DefaultTableModel dtm = (DefaultTableModel) tblProducts.getModel();
+            dtm.setValueAt(productName, selected, 1);
+            dtm.setValueAt(category, selected, 2);
+            dtm.setValueAt(barcode, selected, 3);
+            dtm.setValueAt(price, selected, 4);
+            dtm.setValueAt(quantity, selected, 5);
+            dtm.setValueAt(expiryDate, selected, 6);
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, "Invalid price or quantity format. Please enter valid numbers.");
+        }
+        //this code sets/updates the older values so that they are updated immediately after clicking the edit button
+        //makes sure price is is the right format otherwise displays message dialog
+        //Reference: https://stackoverflow.com/questions/3179136/jtable-how-to-refresh-table-model-after-insert-delete-or-update-the-data (helped with refreshing table data)
     }//GEN-LAST:event_editButton2ActionPerformed
 
     private void helpButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButton1ActionPerformed
-        JOptionPane.showMessageDialog(null, "- Edit the values in the blocks or select a book you want to remove" + "\n" + "- Then click Edit / Delete to change or delete a book");
+        JOptionPane.showMessageDialog(null, "- Edit the values in the blocks or select a book you want to remove" + "\n" + "- Then click Edit / Delete to change or delete a product");
         //creates a message box that helps the user with what the page does
     }//GEN-LAST:event_helpButton1ActionPerformed
 
@@ -321,6 +379,32 @@ public class ModifyProductUI extends javax.swing.JFrame {
         this.tblProductsValueChanged();
         //runs the code: when a row is clicked by the mouse, it will show up in text fields to then edit
     }//GEN-LAST:event_tblProductsMouseClicked
+
+    private boolean isValidBarcode(String barcode1) {
+        return barcode1.matches("\\d{12}");
+        //makes sure barcode is in the right format and no letters
+    }
+
+    public void addTable() {
+        DataHandler dh = new DataHandler();
+        products = dh.getAllProducts();
+        DefaultTableModel dtm = (DefaultTableModel) tblProducts.getModel();
+        //DefaultTableModel dtm = new DefaultTableModel();
+        tblProducts.setModel(dtm);
+        Object productRow[] = new Object[7];
+        for (int i = 0; i < products.size(); i++) {
+            productRow[0] = "" + products.get(i).getProductID();
+            productRow[1] = "" + products.get(i).getProductName();
+            productRow[2] = "" + products.get(i).getCategory();
+            productRow[3] = "" + products.get(i).getBarcode();
+            productRow[4] = "" + products.get(i).getPrice();
+            productRow[5] = "" + products.get(i).getQuantity();
+            productRow[6] = "" + products.get(i).getExpiryDate();
+            dtm.addRow(productRow);
+        }
+        tblProducts.setSelectionMode(0);  // Set the selection to the first book.
+        selected = tblProducts.getSelectedRow();  // Update the selected index.
+    }
 
     /**
      * @param args the command line arguments

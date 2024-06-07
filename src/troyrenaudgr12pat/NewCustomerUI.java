@@ -4,6 +4,9 @@
  */
 package troyrenaudgr12pat;
 
+import java.sql.SQLException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author troyr
@@ -16,6 +19,13 @@ public class NewCustomerUI extends javax.swing.JFrame {
     public NewCustomerUI() {
         initComponents();
     }
+    
+    /**
+    * Inserts a new customer into the database and takes a customer as a parameter.
+    * @param p - the Customer object to be inserted. 
+    * @return - number of rows changed.
+    */
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,13 +37,13 @@ public class NewCustomerUI extends javax.swing.JFrame {
     private void initComponents() {
 
         backBtn = new javax.swing.JButton();
-        nameLbl = new javax.swing.JLabel();
-        nameTF = new javax.swing.JTextField();
-        surnameLbl = new javax.swing.JLabel();
+        customerNameLbl = new javax.swing.JLabel();
+        firstnameTF = new javax.swing.JTextField();
+        customerSurnameLbl = new javax.swing.JLabel();
         surnameTF = new javax.swing.JTextField();
-        cellphoneNumberLbl = new javax.swing.JLabel();
+        customerCellphoneNumberLbl = new javax.swing.JLabel();
         cellphoneNumberTF = new javax.swing.JTextField();
-        jLabel4 = new javax.swing.JLabel();
+        customerEmailLbl = new javax.swing.JLabel();
         emailTF = new javax.swing.JTextField();
         confirmBtn = new javax.swing.JButton();
 
@@ -46,21 +56,13 @@ public class NewCustomerUI extends javax.swing.JFrame {
             }
         });
 
-        nameLbl.setText("Name:");
+        customerNameLbl.setText("Name:");
 
-        nameTF.setText("jTextField1");
+        customerSurnameLbl.setText("Surname:");
 
-        surnameLbl.setText("Surname:");
+        customerCellphoneNumberLbl.setText("Cellphone Number:");
 
-        surnameTF.setText("jTextField2");
-
-        cellphoneNumberLbl.setText("Cellphone Number:");
-
-        cellphoneNumberTF.setText("jTextField3");
-
-        jLabel4.setText("Email:");
-
-        emailTF.setText("jTextField4");
+        customerEmailLbl.setText("Email:");
 
         confirmBtn.setText("Confirm");
         confirmBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -79,17 +81,17 @@ public class NewCustomerUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(nameLbl)
-                    .addComponent(surnameLbl)
-                    .addComponent(cellphoneNumberLbl)
-                    .addComponent(jLabel4))
+                    .addComponent(customerNameLbl)
+                    .addComponent(customerSurnameLbl)
+                    .addComponent(customerCellphoneNumberLbl)
+                    .addComponent(customerEmailLbl))
                 .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cellphoneNumberTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(surnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(92, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(emailTF, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                    .addComponent(cellphoneNumberTF)
+                    .addComponent(surnameTF)
+                    .addComponent(firstnameTF))
+                .addContainerGap(54, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(confirmBtn))
@@ -100,19 +102,19 @@ public class NewCustomerUI extends javax.swing.JFrame {
                 .addComponent(backBtn)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(nameLbl)
-                    .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(customerNameLbl)
+                    .addComponent(firstnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(surnameLbl)
+                    .addComponent(customerSurnameLbl)
                     .addComponent(surnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cellphoneNumberLbl)
+                    .addComponent(customerCellphoneNumberLbl)
                     .addComponent(cellphoneNumberTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
+                    .addComponent(customerEmailLbl)
                     .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(confirmBtn))
@@ -128,10 +130,63 @@ public class NewCustomerUI extends javax.swing.JFrame {
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
-        LandingPageUI lp = new LandingPageUI();
-        lp.setVisible(true);
-        this.dispose();
+        String firstname = firstnameTF.getText().trim();
+        String surname = surnameTF.getText().trim();
+        String cellphoneNumber = cellphoneNumberTF.getText().trim();
+        String email = emailTF.getText().trim();
+        // Extracts text from the text fields and trims spaces
+
+        if (firstname.isEmpty() || surname.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "First name and surname must be entered.");
+            return;
+        }
+        // Check if first name and surname fields are empty
+
+        if (cellphoneNumber.isEmpty() && email.isEmpty()) {
+            JOptionPane.showMessageDialog(null, "Either cellphone number or email must be entered.");
+            return;
+        }
+        // Check if both cellphone number and email fields are empty
+
+        if (!cellphoneNumber.isEmpty() && !isValidCellphoneNumber(cellphoneNumber)) {
+            JOptionPane.showMessageDialog(null, "Invalid cellphone number format. Please enter a valid number.");
+            return;
+        }
+        // Validate the cellphone number format if it is provided
+
+        if (!email.isEmpty() && !isValidEmail(email)) {
+            JOptionPane.showMessageDialog(null, "Invalid email format. Please enter a valid email.");
+            return;
+        }
+        // Validate the email format if it is provided
+
+        Customer newCustomer = new Customer(firstname, surname, cellphoneNumber, email);
+        // Create a new Customer object with the provided details
+
+        // Insert the new Customer using DataHandler
+        DataHandler dh = new DataHandler();
+        int result = dh.insertNewCustomer(newCustomer);
+        
+        if (result > 0) {
+            JOptionPane.showMessageDialog(null, "Customer successfully added.");
+            LandingPageUI lp = new LandingPageUI();
+            lp.setVisible(true);
+            this.dispose();
+        } else {
+            JOptionPane.showMessageDialog(null, "Error adding customer. Please try again.");
+        }
     }//GEN-LAST:event_confirmBtnActionPerformed
+
+    // Utility methods for validation
+    private boolean isValidCellphoneNumber(String cellphoneNumber) {
+        return cellphoneNumber.matches("\\d{10}");
+        // Example pattern for a 10-digit number, adjust the pattern based on your requirements
+    }
+
+    private boolean isValidEmail(String email) {
+        return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
+        // Simple email pattern validation, you can enhance it based on your needs
+    }
 
     /**
      * @param args the command line arguments
@@ -171,14 +226,14 @@ public class NewCustomerUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JLabel cellphoneNumberLbl;
     private javax.swing.JTextField cellphoneNumberTF;
     private javax.swing.JButton confirmBtn;
+    private javax.swing.JLabel customerCellphoneNumberLbl;
+    private javax.swing.JLabel customerEmailLbl;
+    private javax.swing.JLabel customerNameLbl;
+    private javax.swing.JLabel customerSurnameLbl;
     private javax.swing.JTextField emailTF;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel nameLbl;
-    private javax.swing.JTextField nameTF;
-    private javax.swing.JLabel surnameLbl;
+    private javax.swing.JTextField firstnameTF;
     private javax.swing.JTextField surnameTF;
     // End of variables declaration//GEN-END:variables
 }

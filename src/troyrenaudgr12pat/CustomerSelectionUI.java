@@ -49,6 +49,11 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
         });
 
         backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -92,6 +97,14 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
         pc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_previousCustomerBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        LoginPageUI lp1 = new LoginPageUI();
+        lp1.setVisible(true);
+        this.dispose();
+        // Handle the action when the "Back" button is clicked.
+        // It opens the LandingPageUI and closes the current window.
+    }//GEN-LAST:event_backBtnActionPerformed
 
     /**
      * @param args the command line arguments

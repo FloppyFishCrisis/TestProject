@@ -98,5 +98,59 @@ public class DataHandler {
         }
          return numRows;
     }
+    
+    public int insertNewCustomer (Customer c){
+        int numRows = 0;
+         try {
+             //INSERT INTO tblCustomers(customerFirstname, customerSurname, customerCellphoneNumber, customerEmail) VALUES ()
+            String sql = "INSERT INTO tblCustomers(customerFirstname, customerSurname, customerCellphoneNumber, customerEmail) VALUES (\"" + c.getCustomerFirstname() + "\",\"" + c.getCustomerSurname() + "\",\"" + c.getCustomerCellphoneNumber() + "\",\"" + c.getCustomerEmail() + "\");";
+            Connect conn = new Connect();
+            numRows = conn.makeChange(sql);
+        } catch (SQLException e) {
+             System.err.println(e);
+        }
+         return numRows;
+    }
+    
+    /**
+     * This method gets all of the customers in the database 
+     * makes Customer objects from data, puts them in the arraylist
+     * and returns the arraylist.
+     * @return arraylist<Customer> - contains all customers in the database.
+     */
+    public ArrayList<Customer> getAllCustomers() {
+        ArrayList<Customer> customers = new ArrayList();
+        try {
+            String sql = "SELECT * FROM wyverndb.tblcustomers;";
+            Connect conn = new Connect();
+            ResultSet rs = conn.query(sql);
+            while (rs.next()) {
+                int customerID = rs.getInt("customerid");
+                String cfn = rs.getString("customerfirstname");
+                String csn = rs.getString("customersurname");
+                String ccn = rs.getString("customercellphonenumber");
+                String ce = rs.getString("customeremail");
+                Customer c = new Customer(customerID, cfn, csn, ccn, ce);
+                customers.add(c);
+            }
+            conn.close();
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+        return customers;
+    }
+    
+    public int deleteCustomer(Customer c){
+        int numRows = 0;
+         try {
+            //DELETE FROM tblProducts WHERE productID = 5
+            String sql = "DELETE FROM tblCustomers WHERE productID = " + c.getCustomerID();
+            Connect conn = new Connect();
+            numRows = conn.makeChange(sql);
+        } catch (SQLException e) {
+             System.err.println(e);
+        }
+         return numRows;
+    }
 }
 

@@ -35,8 +35,18 @@ public class LandingPageUI extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         productsForTabBtn.setText("Add Products to Tab");
+        productsForTabBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                productsForTabBtnActionPerformed(evt);
+            }
+        });
 
         addProductBtn.setText("Add New Product");
+        addProductBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addProductBtnActionPerformed(evt);
+            }
+        });
 
         modifyProductBtn.setText("Modify Product");
         modifyProductBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -53,25 +63,35 @@ public class LandingPageUI extends javax.swing.JFrame {
         });
 
         backBtn.setText("Back");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                backBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
                 .addGap(125, 125, 125)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(productsForTabBtn)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(modifyProductBtn)
-                            .addComponent(addProductBtn)
                             .addComponent(manageTabsBtn))
-                        .addGap(10, 10, 10)))
-                .addContainerGap(144, Short.MAX_VALUE))
+                        .addContainerGap(164, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(addProductBtn)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(backBtn)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(117, 117, 117)
+                        .addComponent(productsForTabBtn)))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -79,13 +99,13 @@ public class LandingPageUI extends javax.swing.JFrame {
                 .addComponent(backBtn)
                 .addGap(46, 46, 46)
                 .addComponent(productsForTabBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(18, 18, 18)
                 .addComponent(addProductBtn)
-                .addGap(11, 11, 11)
+                .addGap(19, 19, 19)
                 .addComponent(modifyProductBtn)
-                .addGap(11, 11, 11)
+                .addGap(18, 18, 18)
                 .addComponent(manageTabsBtn)
-                .addContainerGap(111, Short.MAX_VALUE))
+                .addContainerGap(84, Short.MAX_VALUE))
         );
 
         pack();
@@ -100,6 +120,24 @@ public class LandingPageUI extends javax.swing.JFrame {
         mp.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_modifyProductBtnActionPerformed
+
+    private void productsForTabBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_productsForTabBtnActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_productsForTabBtnActionPerformed
+
+    private void addProductBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addProductBtnActionPerformed
+        AddNewProductUI anp = new AddNewProductUI();
+        anp.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_addProductBtnActionPerformed
+
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        CustomerSelectionUI cs = new CustomerSelectionUI();
+        cs.setVisible(true);
+        this.dispose();
+        // Handle the action when the "Back" button is clicked.
+        // It opens the LandingPageUI and closes the current window.
+    }//GEN-LAST:event_backBtnActionPerformed
 
     /**
      * @param args the command line arguments

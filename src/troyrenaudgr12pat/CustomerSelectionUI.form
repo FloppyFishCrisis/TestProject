@@ -58,10 +58,10 @@
   <SubComponents>
     <Component class="javax.swing.JButton" name="newCustomerBtn">
       <Properties>
+        <Property name="text" type="java.lang.String" value="New Customer"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="New Customer"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newCustomerBtnActionPerformed"/>
@@ -69,10 +69,10 @@
     </Component>
     <Component class="javax.swing.JButton" name="previousCustomerBtn">
       <Properties>
+        <Property name="text" type="java.lang.String" value="Previous Customer"/>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Tahoma" size="18" style="0"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Previous Customer"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="previousCustomerBtnActionPerformed"/>
@@ -82,6 +82,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
