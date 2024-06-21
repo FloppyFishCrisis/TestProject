@@ -30,17 +30,17 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="customerNameLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="customerSurnameLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="customerCellphoneNumberLbl" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="customerEmailLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerNameAdminLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerSurnameAdminLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerCellphoneNumberAdminLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerEmailAdminLbl" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="emailTF" alignment="0" pref="98" max="32767" attributes="0"/>
-                  <Component id="cellphoneNumberTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="surnameTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="firstnameTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="emailAdminTF" alignment="0" pref="98" max="32767" attributes="0"/>
+                  <Component id="cellphoneNumberAdminTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="surnameAdminTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="firstnameAdminTF" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace pref="954" max="32767" attributes="0"/>
           </Group>
@@ -56,23 +56,23 @@
               <Component id="backBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="customerNameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="firstnameTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerNameAdminLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="firstnameAdminTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="customerSurnameLbl" min="-2" max="-2" attributes="0"/>
-                  <Component id="surnameTF" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerSurnameAdminLbl" alignment="0" min="-2" max="-2" attributes="0"/>
+                  <Component id="surnameAdminTF" alignment="0" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="customerCellphoneNumberLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="cellphoneNumberTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerCellphoneNumberAdminLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cellphoneNumberAdminTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="customerEmailLbl" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="emailTF" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="customerEmailAdminLbl" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="emailAdminTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="596" max="32767" attributes="0"/>
               <Component id="confirmBtn" min="-2" max="-2" attributes="0"/>
@@ -81,6 +81,14 @@
     </DimensionLayout>
   </Layout>
   <SubComponents>
+    <Component class="javax.swing.JButton" name="confirmBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Confirm"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmBtnActionPerformed"/>
+      </Events>
+    </Component>
     <Component class="javax.swing.JButton" name="backBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Back"/>
@@ -89,41 +97,33 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JLabel" name="customerNameLbl">
+    <Component class="javax.swing.JLabel" name="customerNameAdminLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Name:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="firstnameTF">
+    <Component class="javax.swing.JTextField" name="firstnameAdminTF">
     </Component>
-    <Component class="javax.swing.JLabel" name="customerSurnameLbl">
+    <Component class="javax.swing.JLabel" name="customerSurnameAdminLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Surname:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="surnameTF">
+    <Component class="javax.swing.JTextField" name="surnameAdminTF">
     </Component>
-    <Component class="javax.swing.JLabel" name="customerCellphoneNumberLbl">
+    <Component class="javax.swing.JLabel" name="customerCellphoneNumberAdminLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Cellphone Number:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="cellphoneNumberTF">
+    <Component class="javax.swing.JTextField" name="cellphoneNumberAdminTF">
     </Component>
-    <Component class="javax.swing.JLabel" name="customerEmailLbl">
+    <Component class="javax.swing.JLabel" name="customerEmailAdminLbl">
       <Properties>
         <Property name="text" type="java.lang.String" value="Email:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="emailTF">
-    </Component>
-    <Component class="javax.swing.JButton" name="confirmBtn">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Confirm"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmBtnActionPerformed"/>
-      </Events>
+    <Component class="javax.swing.JTextField" name="emailAdminTF">
     </Component>
   </SubComponents>
 </Form>

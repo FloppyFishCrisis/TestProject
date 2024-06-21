@@ -4,6 +4,8 @@
  */
 package troyrenaudgr12pat;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author troyr
@@ -12,6 +14,7 @@ public class Tab {
     int tabID;
     int customerID;
     double balance;
+    private ArrayList<Product> products;
 
     public Tab(int tabID, int customerID, double balance) {
         this.tabID = tabID;
@@ -25,6 +28,13 @@ public class Tab {
         this.customerID = customer.getCustomerID();
         this.balance = balance;
     }
+    
+    public void addProduct(Product product, int quantity) {
+        for (int i = 0; i < quantity; i++) {
+            products.add(product);
+        }
+        balance += product.getPrice() * quantity;
+    }
 
     // Getters for Tab fields
     public int getTabID() {
@@ -37,6 +47,10 @@ public class Tab {
 
     public double getBalance() {
         return balance;
+    }
+    
+    public ArrayList<Product> getProducts() {
+        return products;
     }
 
     @Override

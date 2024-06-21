@@ -10,11 +10,16 @@ package troyrenaudgr12pat;
  */
 public class CustomerSelectionUI extends javax.swing.JFrame {
 
+    private User currentUser;
+    private Customer currentCustomer;
+    
     /**
      * Creates new form TabSelection
      */
-    public CustomerSelectionUI() {
+    public CustomerSelectionUI(User u, Customer c) {
         initComponents();
+        currentUser = u;
+        currentCustomer = c;
     }
 
     /**
@@ -32,16 +37,16 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        newCustomerBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         newCustomerBtn.setText("New Customer");
+        newCustomerBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         newCustomerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newCustomerBtnActionPerformed(evt);
             }
         });
 
-        previousCustomerBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         previousCustomerBtn.setText("Previous Customer");
+        previousCustomerBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         previousCustomerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 previousCustomerBtnActionPerformed(evt);
@@ -70,7 +75,7 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGap(124, 124, 124)
                         .addComponent(newCustomerBtn)))
-                .addContainerGap(114, Short.MAX_VALUE))
+                .addContainerGap(1014, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -80,20 +85,20 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
                 .addComponent(newCustomerBtn)
                 .addGap(44, 44, 44)
                 .addComponent(previousCustomerBtn)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(599, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void newCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCustomerBtnActionPerformed
-        NewCustomerUI nc = new NewCustomerUI();
+        NewCustomerUI nc = new NewCustomerUI(currentUser, currentCustomer);
         nc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_newCustomerBtnActionPerformed
 
     private void previousCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousCustomerBtnActionPerformed
-        PreviousCustomerUI pc = new PreviousCustomerUI();
+        PreviousCustomerUI pc = new PreviousCustomerUI(currentUser, currentCustomer);
         pc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_previousCustomerBtnActionPerformed
@@ -139,7 +144,7 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerSelectionUI().setVisible(true);
+                //new CustomerSelectionUI().setVisible(true);
             }
         });
     }

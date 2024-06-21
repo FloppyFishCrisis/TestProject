@@ -4,7 +4,6 @@
  */
 package troyrenaudgr12pat;
 
-import java.awt.print.Book;
 import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
@@ -12,13 +11,28 @@ import javax.swing.JOptionPane;
  *
  * @author troyr
  */
-public class AddNewProductUI extends javax.swing.JFrame {
+public class AdminNewProductUI extends javax.swing.JFrame {
+    
+    private User adminUser;
+    private Customer currentCustomer;
 
     /**
-     * Creates new form AddNewProductUI
+     * Creates new form AdminNewProduct
      */
-    public AddNewProductUI() {
+    public AdminNewProductUI(User adminUser, Customer c) {
         initComponents();
+        this.adminUser = adminUser;
+        currentCustomer = c;
+        populateCategoryComboBox();
+    }
+    
+    private void populateCategoryComboBox() {
+        String[] categories = {"Buns & Rolls", "Burgers", "Pizzas", "Toasted Sandwiches", "Snacks"};
+
+        // Add categories to comboBox
+        for (String category : categories) {
+            categoryComboBox.addItem(category);
+        }
     }
 
     /**
@@ -30,23 +44,28 @@ public class AddNewProductUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        newBarcodeTF = new javax.swing.JTextField();
-        newProductNameTF = new javax.swing.JTextField();
-        newExpiryDatePicker = new com.github.lgooddatepicker.components.DatePicker();
-        btnBack = new javax.swing.JButton();
-        newCategoryTF = new javax.swing.JTextField();
-        newQuantityTF = new javax.swing.JTextField();
-        insertButton1 = new javax.swing.JButton();
-        helpButton3 = new javax.swing.JButton();
-        newProductName = new javax.swing.JLabel();
         newCategory = new javax.swing.JLabel();
         newBarcode = new javax.swing.JLabel();
         newPrice = new javax.swing.JLabel();
+        newBarcodeTF = new javax.swing.JTextField();
         newQuantity = new javax.swing.JLabel();
+        newProductNameTF = new javax.swing.JTextField();
         newExpiryDate = new javax.swing.JLabel();
+        newExpiryDatePicker = new com.github.lgooddatepicker.components.DatePicker();
         newPriceTF = new javax.swing.JTextField();
+        btnBack = new javax.swing.JButton();
+        newQuantityTF = new javax.swing.JTextField();
+        insertButton1 = new javax.swing.JButton();
+        newProductName = new javax.swing.JLabel();
+        categoryComboBox = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        newCategory.setText("Category:");
+
+        newBarcode.setText("Barcode:");
+
+        newPrice.setText("Price:");
 
         newBarcodeTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -54,11 +73,15 @@ public class AddNewProductUI extends javax.swing.JFrame {
             }
         });
 
+        newQuantity.setText("Quantity:");
+
         newProductNameTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newProductNameTFActionPerformed(evt);
             }
         });
+
+        newExpiryDate.setText("Expiry Date:");
 
         btnBack.setText("←");
         btnBack.setBackground(new java.awt.Color(204, 204, 255));
@@ -83,108 +106,74 @@ public class AddNewProductUI extends javax.swing.JFrame {
             }
         });
 
-        helpButton3.setText("Help");
-        helpButton3.setBackground(new java.awt.Color(255, 153, 153));
-        helpButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                helpButton3ActionPerformed(evt);
-            }
-        });
-
         newProductName.setText("Product Name:");
 
-        newCategory.setText("Category:");
-
-        newBarcode.setText("Barcode:");
-
-        newPrice.setText("Price:");
-
-        newQuantity.setText("Quantity:");
-
-        newExpiryDate.setText("Expiry Date:");
+        categoryComboBox.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryComboBoxActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(insertButton1)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(newQuantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap(152, Short.MAX_VALUE)
+                .addContainerGap(977, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(insertButton1, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(newQuantity, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(newPrice, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(newBarcode, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(newCategory, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(newProductName, javax.swing.GroupLayout.Alignment.TRAILING))
-                                .addGap(77, 77, 77)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(newCategoryTF, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(newBarcodeTF, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(newPriceTF, javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(newProductNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(newExpiryDate)
-                                .addGap(77, 77, 77)
-                                .addComponent(newExpiryDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addGap(35, 35, 35))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 10, Short.MAX_VALUE)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(330, 330, 330)
-                    .addComponent(helpButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 10, Short.MAX_VALUE)))
+                            .addComponent(newExpiryDate)
+                            .addComponent(newQuantity)
+                            .addComponent(newPrice)
+                            .addComponent(newBarcode)
+                            .addComponent(newCategory)
+                            .addComponent(newProductName))
+                        .addGap(64, 64, 64)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(newQuantityTF)
+                            .addComponent(newExpiryDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(newPriceTF)
+                            .addComponent(newBarcodeTF)
+                            .addComponent(newProductNameTF)
+                            .addComponent(categoryComboBox, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(53, 53, 53))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(60, 60, 60)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btnBack)
+                .addGap(10, 10, 10)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newProductName)
-                    .addComponent(newProductNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newProductNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newProductName))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newCategoryTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newCategory))
-                .addGap(17, 17, 17)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(newBarcodeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newBarcode))
+                    .addComponent(newCategory)
+                    .addComponent(categoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newPriceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newPrice))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
+                    .addComponent(newBarcode)
+                    .addComponent(newBarcodeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newQuantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newQuantity))
-                .addGap(27, 27, 27)
+                    .addComponent(newPrice)
+                    .addComponent(newPriceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newExpiryDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newExpiryDate))
+                    .addComponent(newQuantity)
+                    .addComponent(newQuantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(newExpiryDate)
+                    .addComponent(newExpiryDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(43, 43, 43)
-                .addComponent(insertButton1)
-                .addContainerGap())
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addGap(0, 12, Short.MAX_VALUE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(btnBack)
-                        .addComponent(helpButton3))
-                    .addGap(0, 327, Short.MAX_VALUE)))
+                .addComponent(insertButton1))
         );
-
-        newQuantityTF.getAccessibleContext().setAccessibleDescription("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -198,8 +187,8 @@ public class AddNewProductUI extends javax.swing.JFrame {
     }//GEN-LAST:event_newProductNameTFActionPerformed
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        LandingPageUI lp = new LandingPageUI();
-        lp.setVisible(true);
+        ProductManagementUI pm = new ProductManagementUI(adminUser, currentCustomer);
+        pm.setVisible(true);
         this.dispose();
         // Handle the action when the "Back" button is clicked.
         // It opens the LandingPageUI and closes the current window.
@@ -211,19 +200,18 @@ public class AddNewProductUI extends javax.swing.JFrame {
 
     private void insertButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButton1ActionPerformed
         String pn = newProductNameTF.getText().trim();
-        String category = newCategoryTF.getText().trim();
+        String category = (String) categoryComboBox.getSelectedItem();
         String barcode = newBarcodeTF.getText().trim();
         String priceText = newPriceTF.getText().trim();
         String quantityText = newQuantityTF.getText().trim();
-        //extracts text from four different text fields and stores that text in four separate String variables
-        //.trim helps .isEmpty to work by trimming spaces and seeing if values were left out
+        // Extracts text from different text fields and stores it in separate String variables.
+        // .trim helps .isEmpty to work by trimming spaces and seeing if values were left out.
 
         if (pn.isEmpty() || category.isEmpty() || barcode.isEmpty() || priceText.isEmpty() || quantityText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All text fields must be entered.");
             return;
         }
-        // Check if any of the text fields are empty
-        //this is an if statement to see what if the data will be returned true/false - and then follow up with commands like a message pop-up
+        // Check if any of the text fields are empty.
 
         double price;
         try {
@@ -231,7 +219,7 @@ public class AddNewProductUI extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Invalid price format. Please enter a valid number.");
             return;
-            //makes sure that the price entered is in the right format and if not it displays a message
+            // Ensures that the price entered is in the correct format and displays a message if it isn't.
         }
 
         int quantity;
@@ -240,47 +228,51 @@ public class AddNewProductUI extends javax.swing.JFrame {
         } catch (NumberFormatException e) {
             JOptionPane.showMessageDialog(null, "Invalid quantity format. Please enter a valid integer.");
             return;
-            // Makes sure that the quantity entered is in the right format and if not it displays a message
+            // Ensures that the quantity entered is in the correct format and displays a message if it isn't.
         }
 
         LocalDate publicationDate = newExpiryDatePicker.getDate();
         Product newProduct = new Product(pn, category, barcode, price, quantity, publicationDate);
-        //updates to the current editted data
+        // Updates the current edited data.
 
         if (!isValidBarcode(barcode)) {
             JOptionPane.showMessageDialog(null, "Invalid barcode format. Please enter a valid barcode.");
             return;
-            //runs the isValidBarcode code an return message if false
+            // Runs the isValidBarcode code and returns a message if false.
         }
 
-        //Insert the new Book using BookHandler
+        // Insert the new Book using BookHandler.
         DataHandler dh = new DataHandler();
         dh.insertNewProduct(newProduct);
 
-        clearTextFields(); //runs the clearing of the fields
+        clearTextFields(); // Clears the text fields.
     }//GEN-LAST:event_insertButton1ActionPerformed
+
+    private void categoryComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoryComboBoxActionPerformed
 
     private void clearTextFields() {
         newProductNameTF.setText("");
-        newCategoryTF.setText("");
+        categoryComboBox.setSelectedItem(null);
         newBarcodeTF.setText("");
         newPriceTF.setText("");
         newQuantityTF.setText("");
         newExpiryDatePicker.setDate(null);
-        //method is used to reset the values of text fields
+        // Method to reset the values of text fields.
     }
 
     private boolean isValidBarcode(String barcode) {
         return barcode.matches("\\d{12}");
-        //makes sure barcode is in the right format and no letters
-        //https://stackoverflow.com/questions/21426481/what-does-the-regex-d3-d-mean
+        // Ensures the barcode is in the correct format and contains no letters.
+        // Reference: https://stackoverflow.com/questions/21426481/what-does-the-regex-d3-d-mean
     }
 
-    private void helpButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButton3ActionPerformed
+    private void helpButton3ActionPerformed(java.awt.event.ActionEvent evt) {
         JOptionPane.showMessageDialog(null, "- Type values in the blocks" + "\n" + "- Then click Insert to create a product on the system");
-        //creates a message box that helps the user with what the page does
-    }//GEN-LAST:event_helpButton3ActionPerformed
-
+        // Creates a message box that helps the user with what the page does.
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -298,32 +290,32 @@ public class AddNewProductUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AddNewProductUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminNewProductUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AddNewProductUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminNewProductUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AddNewProductUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminNewProductUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AddNewProductUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminNewProductUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new AddNewProductUI().setVisible(true);
+                //new AdminNewProductUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
-    private javax.swing.JButton helpButton3;
+    private javax.swing.JComboBox<String> categoryComboBox;
     private javax.swing.JButton insertButton1;
     private javax.swing.JLabel newBarcode;
     private javax.swing.JTextField newBarcodeTF;
     private javax.swing.JLabel newCategory;
-    private javax.swing.JTextField newCategoryTF;
     private javax.swing.JLabel newExpiryDate;
     private com.github.lgooddatepicker.components.DatePicker newExpiryDatePicker;
     private javax.swing.JLabel newPrice;

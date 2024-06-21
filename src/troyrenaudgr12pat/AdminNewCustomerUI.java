@@ -4,24 +4,23 @@
  */
 package troyrenaudgr12pat;
 
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author troyr
  */
-public class NewCustomerUI extends javax.swing.JFrame {
-
-    private User currentUser;
-    private Customer currentCustomer;
+public class AdminNewCustomerUI extends javax.swing.JFrame {
     
+    private User adminUser;
+    private Customer currentCustomer;
+
     /**
-     * Creates new form NewCustomer
+     * Creates new form AdminNewCustomerUI
      */
-    public NewCustomerUI(User u, Customer c) {
+    public AdminNewCustomerUI(User adminUser, Customer c) {
         initComponents();
-        currentUser = u;
+        this.adminUser = adminUser;
         currentCustomer = c;
     }
 
@@ -34,18 +33,25 @@ public class NewCustomerUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        backBtn = new javax.swing.JButton();
-        customerNameLbl = new javax.swing.JLabel();
-        firstnameTF = new javax.swing.JTextField();
-        customerSurnameLbl = new javax.swing.JLabel();
-        surnameTF = new javax.swing.JTextField();
-        customerCellphoneNumberLbl = new javax.swing.JLabel();
-        cellphoneNumberTF = new javax.swing.JTextField();
-        customerEmailLbl = new javax.swing.JLabel();
-        emailTF = new javax.swing.JTextField();
         confirmBtn = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
+        customerNameAdminLbl = new javax.swing.JLabel();
+        firstnameAdminTF = new javax.swing.JTextField();
+        customerSurnameAdminLbl = new javax.swing.JLabel();
+        surnameAdminTF = new javax.swing.JTextField();
+        customerCellphoneNumberAdminLbl = new javax.swing.JLabel();
+        cellphoneNumberAdminTF = new javax.swing.JTextField();
+        customerEmailAdminLbl = new javax.swing.JLabel();
+        emailAdminTF = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        confirmBtn.setText("Confirm");
+        confirmBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                confirmBtnActionPerformed(evt);
+            }
+        });
 
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -54,20 +60,13 @@ public class NewCustomerUI extends javax.swing.JFrame {
             }
         });
 
-        customerNameLbl.setText("Name:");
+        customerNameAdminLbl.setText("Name:");
 
-        customerSurnameLbl.setText("Surname:");
+        customerSurnameAdminLbl.setText("Surname:");
 
-        customerCellphoneNumberLbl.setText("Cellphone Number:");
+        customerCellphoneNumberAdminLbl.setText("Cellphone Number:");
 
-        customerEmailLbl.setText("Email:");
-
-        confirmBtn.setText("Confirm");
-        confirmBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                confirmBtnActionPerformed(evt);
-            }
-        });
+        customerEmailAdminLbl.setText("Email:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,16 +78,16 @@ public class NewCustomerUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(92, 92, 92)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerNameLbl)
-                    .addComponent(customerSurnameLbl)
-                    .addComponent(customerCellphoneNumberLbl)
-                    .addComponent(customerEmailLbl))
+                    .addComponent(customerNameAdminLbl)
+                    .addComponent(customerSurnameAdminLbl)
+                    .addComponent(customerCellphoneNumberAdminLbl)
+                    .addComponent(customerEmailAdminLbl))
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(emailTF, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                    .addComponent(cellphoneNumberTF)
-                    .addComponent(surnameTF)
-                    .addComponent(firstnameTF))
+                    .addComponent(emailAdminTF, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                    .addComponent(cellphoneNumberAdminTF)
+                    .addComponent(surnameAdminTF)
+                    .addComponent(firstnameAdminTF))
                 .addContainerGap(954, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -100,20 +99,20 @@ public class NewCustomerUI extends javax.swing.JFrame {
                 .addComponent(backBtn)
                 .addGap(31, 31, 31)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerNameLbl)
-                    .addComponent(firstnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(customerNameAdminLbl)
+                    .addComponent(firstnameAdminTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerSurnameLbl)
-                    .addComponent(surnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(customerSurnameAdminLbl)
+                    .addComponent(surnameAdminTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerCellphoneNumberLbl)
-                    .addComponent(cellphoneNumberTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(customerCellphoneNumberAdminLbl)
+                    .addComponent(cellphoneNumberAdminTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerEmailLbl)
-                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(customerEmailAdminLbl)
+                    .addComponent(emailAdminTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 596, Short.MAX_VALUE)
                 .addComponent(confirmBtn))
         );
@@ -121,17 +120,11 @@ public class NewCustomerUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        CustomerSelectionUI cs = new CustomerSelectionUI(currentUser, currentCustomer);
-        cs.setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_backBtnActionPerformed
-
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
-        String firstname = firstnameTF.getText().trim();
-        String surname = surnameTF.getText().trim();
-        String cellphoneNumber = cellphoneNumberTF.getText().trim();
-        String email = emailTF.getText().trim();
+        String firstname = firstnameAdminTF.getText().trim();
+        String surname = surnameAdminTF.getText().trim();
+        String cellphoneNumber = cellphoneNumberAdminTF.getText().trim();
+        String email = emailAdminTF.getText().trim();
         // Extracts text from the text fields and trims spaces
 
         if (firstname.isEmpty() || surname.isEmpty()) {
@@ -164,10 +157,10 @@ public class NewCustomerUI extends javax.swing.JFrame {
         // Insert the new Customer using DataHandler
         DataHandler dh = new DataHandler();
         int result = dh.insertNewCustomer(newCustomer);
-        
+
         if (result > 0) {
             JOptionPane.showMessageDialog(null, "Customer successfully added.");
-            SelectProductsForTabUI lp = new SelectProductsForTabUI(currentUser, currentCustomer);
+            SelectProductsForTabUI lp = new SelectProductsForTabUI(adminUser, currentCustomer);
             lp.setVisible(true);
             this.dispose();
         } else {
@@ -185,6 +178,12 @@ public class NewCustomerUI extends javax.swing.JFrame {
         return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
         // Simple email pattern validation, you can enhance it based on your needs
     }
+    
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
+        CustomerManagementUI cm = new CustomerManagementUI(adminUser, currentCustomer);
+        cm.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_backBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -203,35 +202,34 @@ public class NewCustomerUI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminNewCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminNewCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminNewCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(AdminNewCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new NewCustomerUI().setVisible(true);
+                //new AdminNewCustomerUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
-    private javax.swing.JTextField cellphoneNumberTF;
+    private javax.swing.JTextField cellphoneNumberAdminTF;
     private javax.swing.JButton confirmBtn;
-    private javax.swing.JLabel customerCellphoneNumberLbl;
-    private javax.swing.JLabel customerEmailLbl;
-    private javax.swing.JLabel customerNameLbl;
-    private javax.swing.JLabel customerSurnameLbl;
-    private javax.swing.JTextField emailTF;
-    private javax.swing.JTextField firstnameTF;
-    private javax.swing.JTextField surnameTF;
+    private javax.swing.JLabel customerCellphoneNumberAdminLbl;
+    private javax.swing.JLabel customerEmailAdminLbl;
+    private javax.swing.JLabel customerNameAdminLbl;
+    private javax.swing.JLabel customerSurnameAdminLbl;
+    private javax.swing.JTextField emailAdminTF;
+    private javax.swing.JTextField firstnameAdminTF;
+    private javax.swing.JTextField surnameAdminTF;
     // End of variables declaration//GEN-END:variables
 }

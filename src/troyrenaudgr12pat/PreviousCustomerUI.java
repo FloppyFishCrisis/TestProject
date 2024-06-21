@@ -16,15 +16,19 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
 
     private ArrayList<Customer> customers;
     private int selected = -1;
+    private User currentUser;
+    private Customer currentCustomer;
 
     /**
      * Creates new form PreviousCustomer
      */
-    public PreviousCustomerUI() {
+    public PreviousCustomerUI(User u, Customer c) {
         initComponents();
         DataHandler dh = new DataHandler();
         customers = dh.getAllCustomers();
         this.addTable();
+        currentUser = u;
+        currentCustomer = c;
     }
 
     /**
@@ -38,9 +42,6 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
 
         backBtn = new javax.swing.JButton();
         confirmBtn = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        previousCustomerList = new javax.swing.JList<>();
-        previousCustomerSelectionLbl = new javax.swing.JLabel();
         searchLbl = new javax.swing.JLabel();
         searchTF = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
@@ -61,15 +62,6 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
                 confirmBtnActionPerformed(evt);
             }
         });
-
-        previousCustomerList.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(previousCustomerList);
-
-        previousCustomerSelectionLbl.setText("Select a previous customer:");
 
         searchLbl.setText("Search:");
 
@@ -95,23 +87,17 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backBtn)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(36, 36, 36)
-                                .addComponent(searchLbl)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(63, 63, 63)
-                                .addComponent(previousCustomerSelectionLbl))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 686, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(backBtn)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1176, Short.MAX_VALUE)
                 .addComponent(confirmBtn))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(57, 57, 57)
+                .addComponent(searchLbl)
+                .addGap(18, 18, 18)
+                .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(57, 57, 57)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -119,17 +105,14 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
                 .addComponent(backBtn)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 277, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(316, 316, 316)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(previousCustomerSelectionLbl)
-                            .addComponent(searchLbl))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(searchLbl)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(136, 136, 136)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
                 .addComponent(confirmBtn))
         );
 
@@ -137,15 +120,15 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        CustomerSelectionUI cs = new CustomerSelectionUI();
+        CustomerSelectionUI cs = new CustomerSelectionUI(currentUser, currentCustomer);
         cs.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
-        if (selected != -1) {
+        if (selected != -1 && selected < customers.size()) {
             Customer selectedCustomer = customers.get(selected);
-            LandingPageUI lp = new LandingPageUI(selectedCustomer);
+            SelectProductsForTabUI lp = new SelectProductsForTabUI(currentUser, selectedCustomer);
             lp.setVisible(true);
             this.dispose();
         } else {
@@ -207,7 +190,7 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PreviousCustomerUI().setVisible(true);
+                //new PreviousCustomerUI().setVisible(true);
             }
         });
     }
@@ -215,10 +198,7 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JButton confirmBtn;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JList<String> previousCustomerList;
-    private javax.swing.JLabel previousCustomerSelectionLbl;
     private javax.swing.JLabel searchLbl;
     private javax.swing.JTextField searchTF;
     private javax.swing.JTable tblCustomers;
