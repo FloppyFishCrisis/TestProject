@@ -23,15 +23,15 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" alignment="0" attributes="0">
-              <Component id="btnBack" min="-2" pref="50" max="-2" attributes="0"/>
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace pref="977" max="32767" attributes="0"/>
+              <EmptySpace pref="1239" max="32767" attributes="0"/>
+              <Component id="insertButton1" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="insertButton1" alignment="1" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="1" attributes="0">
+                  <Component id="btnBack" alignment="0" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="506" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
                           <Component id="newExpiryDate" alignment="1" min="-2" max="-2" attributes="0"/>
                           <Component id="newQuantity" alignment="1" min="-2" max="-2" attributes="0"/>
@@ -47,11 +47,11 @@
                           <Component id="newPriceTF" alignment="0" max="32767" attributes="0"/>
                           <Component id="newBarcodeTF" alignment="0" max="32767" attributes="0"/>
                           <Component id="newProductNameTF" alignment="0" max="32767" attributes="0"/>
-                          <Component id="categoryComboBox" alignment="0" max="32767" attributes="0"/>
+                          <Component id="categoryComboBox" alignment="0" min="-2" pref="135" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
                   </Group>
               </Group>
+              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -59,7 +59,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="btnBack" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="260" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="newProductNameTF" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="newProductName" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -74,7 +74,7 @@
                   <Component id="newBarcode" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="newBarcodeTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace type="separate" max="32767" attributes="0"/>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="newPrice" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="newPriceTF" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -89,7 +89,7 @@
                   <Component id="newExpiryDate" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="newExpiryDatePicker" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+              <EmptySpace pref="289" max="32767" attributes="0"/>
               <Component id="insertButton1" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>

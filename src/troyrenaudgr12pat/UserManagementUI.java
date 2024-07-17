@@ -67,7 +67,7 @@ public class UserManagementUI extends javax.swing.JFrame {
 
         usernameTF = new javax.swing.JTextField();
         passwordTF = new javax.swing.JTextField();
-        AddNewProductBtn = new javax.swing.JButton();
+        AddNewUserBtn = new javax.swing.JButton();
         modifyUsername = new javax.swing.JLabel();
         modifyPassword = new javax.swing.JLabel();
         helpButton1 = new javax.swing.JButton();
@@ -87,10 +87,10 @@ public class UserManagementUI extends javax.swing.JFrame {
             }
         });
 
-        AddNewProductBtn.setText("Add New Product");
-        AddNewProductBtn.addActionListener(new java.awt.event.ActionListener() {
+        AddNewUserBtn.setText("Add User");
+        AddNewUserBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                AddNewProductBtnActionPerformed(evt);
+                AddNewUserBtnActionPerformed(evt);
             }
         });
 
@@ -131,13 +131,27 @@ public class UserManagementUI extends javax.swing.JFrame {
             new String [] {
                 "UserID", "Username", "Password", "Role"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblUsers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblUsersMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tblUsers);
+        if (tblUsers.getColumnModel().getColumnCount() > 0) {
+            tblUsers.getColumnModel().getColumn(0).setResizable(false);
+            tblUsers.getColumnModel().getColumn(1).setResizable(false);
+            tblUsers.getColumnModel().getColumn(2).setResizable(false);
+            tblUsers.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         btnBack.setBackground(new java.awt.Color(204, 204, 255));
         btnBack.setText("←");
@@ -155,16 +169,18 @@ public class UserManagementUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(AddNewProductBtn)
+                        .addComponent(AddNewUserBtn)
                         .addGap(72, 72, 72)
                         .addComponent(deleteButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(71, 71, 71)
-                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 818, Short.MAX_VALUE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 606, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(119, 119, 119)))
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(modifyRole)
@@ -184,12 +200,12 @@ public class UserManagementUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(helpButton1)
+                    .addComponent(btnBack))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(helpButton1)
-                            .addComponent(btnBack))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(modifyUsername))
@@ -201,15 +217,15 @@ public class UserManagementUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(modifyRole)
                             .addComponent(roleTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 329, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(248, 248, 248)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 160, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editButton2)
                     .addComponent(deleteButton2)
-                    .addComponent(AddNewProductBtn)))
+                    .addComponent(AddNewUserBtn)))
         );
 
         pack();
@@ -219,13 +235,13 @@ public class UserManagementUI extends javax.swing.JFrame {
         // Handle the action when the "Title" text field is modified.
     }//GEN-LAST:event_usernameTFActionPerformed
 
-    private void AddNewProductBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewProductBtnActionPerformed
-        AdminNewCustomerUI anc = new AdminNewCustomerUI(adminUser, currentCustomer);
-        anc.setVisible(true);
+    private void AddNewUserBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AddNewUserBtnActionPerformed
+        AdminNewUserUI anu = new AdminNewUserUI(adminUser, currentCustomer);
+        anu.setVisible(true);
         this.dispose();
         // Handle the action when the "Add New Product" button is clicked.
         // It opens the AddNewProductUI and closes the current window.
-    }//GEN-LAST:event_AddNewProductBtnActionPerformed
+    }//GEN-LAST:event_AddNewUserBtnActionPerformed
 
     private void helpButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_helpButton1ActionPerformed
         JOptionPane.showMessageDialog(null, "- Edit the values in the blocks or select a user you want to remove" + "\n" + "- Then click Edit / Delete to change or delete a product");
@@ -379,7 +395,7 @@ public class UserManagementUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton AddNewProductBtn;
+    private javax.swing.JButton AddNewUserBtn;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton deleteButton2;
     private javax.swing.JButton editButton2;

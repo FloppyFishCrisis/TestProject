@@ -9,12 +9,13 @@ package troyrenaudgr12pat;
  * @author troyr
  */
 public class Customer {
+
     int customerID;
     String customerFirstname;
     String customerSurname;
     String customerCellphoneNumber;
     String customerEmail;
-    
+
     public Customer(int customerID, String customerFirstname, String customerSurname, String customerCellphoneNumber, String customerEmail) {
         this.customerID = customerID;
         this.customerFirstname = customerFirstname;
@@ -22,12 +23,22 @@ public class Customer {
         this.customerCellphoneNumber = customerCellphoneNumber;
         this.customerEmail = customerEmail;
     }
-    
+
+    // Constructor accepting only customer ID
+    public Customer(int customerID) {
+        this.customerID = customerID;
+    }
+
+    // Constructor excluding customerID (e.g., for new customers before insertion into DB)
     public Customer(String customerFirstname, String customerSurname, String customerCellphoneNumber, String customerEmail) {
         this.customerFirstname = customerFirstname;
         this.customerSurname = customerSurname;
         this.customerCellphoneNumber = customerCellphoneNumber;
         this.customerEmail = customerEmail;
+    }
+
+    public String getFullname() {
+        return customerFirstname + " " + customerSurname;
     }
 
     public int getCustomerID() {

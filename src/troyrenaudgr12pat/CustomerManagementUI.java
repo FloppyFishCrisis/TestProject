@@ -25,8 +25,8 @@ public class CustomerManagementUI extends javax.swing.JFrame {
     public CustomerManagementUI(User adminUser, Customer c) {
         initComponents();
         DataHandler dh = new DataHandler();  // Initialise and create an instance of the DataHandler class.
-        this.addTable();//initialises the table
-        customers = dh.getAllCustomers(); //initialise the ArrayList
+        this.addTable();
+        customers = dh.getAllCustomers();
         this.adminUser = adminUser;
         currentCustomer = c;
     }
@@ -145,13 +145,28 @@ public class CustomerManagementUI extends javax.swing.JFrame {
             new String [] {
                 "CustomerID", "Name", "Surname", "Cellphone Number", "Email"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblCustomersMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tblCustomers);
+        if (tblCustomers.getColumnModel().getColumnCount() > 0) {
+            tblCustomers.getColumnModel().getColumn(0).setResizable(false);
+            tblCustomers.getColumnModel().getColumn(1).setResizable(false);
+            tblCustomers.getColumnModel().getColumn(2).setResizable(false);
+            tblCustomers.getColumnModel().getColumn(3).setResizable(false);
+            tblCustomers.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         nameTF.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -243,12 +258,13 @@ public class CustomerManagementUI extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(helpBtn)
+                    .addComponent(backBtn))
+                .addGap(236, 236, 236)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(helpBtn)
-                            .addComponent(backBtn))
-                        .addGap(81, 81, 81)
+                        .addGap(39, 39, 39)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(nameLbl)
                             .addComponent(nameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -264,10 +280,8 @@ public class CustomerManagementUI extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(emailLbl)
                             .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 483, Short.MAX_VALUE)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 229, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(editBtn)
                     .addComponent(deleteBtn)

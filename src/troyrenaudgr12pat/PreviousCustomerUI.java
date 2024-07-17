@@ -72,15 +72,30 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ProductID", "ProductName", "Category", "Barcode", "Price", "Quantity", "ExpiryDate"
+                "CustomerID", "Firstname", "Surname", "Cellphone Number", "Email"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tblCustomers.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblCustomersMouseClicked(evt);
             }
         });
         jScrollPane2.setViewportView(tblCustomers);
+        if (tblCustomers.getColumnModel().getColumnCount() > 0) {
+            tblCustomers.getColumnModel().getColumn(0).setResizable(false);
+            tblCustomers.getColumnModel().getColumn(1).setResizable(false);
+            tblCustomers.getColumnModel().getColumn(2).setResizable(false);
+            tblCustomers.getColumnModel().getColumn(3).setResizable(false);
+            tblCustomers.getColumnModel().getColumn(4).setResizable(false);
+        }
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -144,7 +159,6 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
         DataHandler dh = new DataHandler();
         customers = dh.getAllCustomers();
         DefaultTableModel dtm = (DefaultTableModel) tblCustomers.getModel();
-        //DefaultTableModel dtm = new DefaultTableModel();
         tblCustomers.setModel(dtm);
         Object customerRow[] = new Object[5];
         for (int i = 0; i < customers.size(); i++) {
@@ -155,7 +169,7 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
             customerRow[4] = "" + customers.get(i).getCustomerEmail();
             dtm.addRow(customerRow);
         }
-        tblCustomers.setSelectionMode(0);  // Set the selection to the first book.
+        tblCustomers.setSelectionMode(0);  // Set the selection to the first customer.
         selected = tblCustomers.getSelectedRow();  // Update the selected index.
     }
 

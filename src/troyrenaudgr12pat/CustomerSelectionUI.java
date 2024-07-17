@@ -37,16 +37,16 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        newCustomerBtn.setText("New Customer");
         newCustomerBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        newCustomerBtn.setText("New Customer");
         newCustomerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 newCustomerBtnActionPerformed(evt);
             }
         });
 
-        previousCustomerBtn.setText("Previous Customer");
         previousCustomerBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        previousCustomerBtn.setText("Previous Customer");
         previousCustomerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 previousCustomerBtnActionPerformed(evt);
@@ -65,27 +65,25 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(107, 107, 107)
-                        .addComponent(previousCustomerBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(backBtn))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(124, 124, 124)
-                        .addComponent(newCustomerBtn)))
-                .addContainerGap(1014, Short.MAX_VALUE))
+                .addContainerGap()
+                .addComponent(backBtn)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(0, 532, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(previousCustomerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
+                    .addComponent(newCustomerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(541, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(backBtn)
-                .addGap(72, 72, 72)
-                .addComponent(newCustomerBtn)
-                .addGap(44, 44, 44)
-                .addComponent(previousCustomerBtn)
-                .addContainerGap(599, Short.MAX_VALUE))
+                .addGap(256, 256, 256)
+                .addComponent(newCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(73, 73, 73)
+                .addComponent(previousCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(322, Short.MAX_VALUE))
         );
 
         pack();

@@ -75,8 +75,6 @@ public class Product {
     public LocalDate getExpiryDate() {
         return expiryDate;
     }
-    
-    
 
     @Override
     public String toString() {

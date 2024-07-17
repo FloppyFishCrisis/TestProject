@@ -27,8 +27,12 @@
               <Component id="backBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
-          <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace min="0" pref="1231" max="32767" attributes="0"/>
+              <Component id="confirmBtn" min="-2" max="-2" attributes="0"/>
+          </Group>
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Component id="customerNameAdminLbl" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="customerSurnameAdminLbl" alignment="0" min="-2" max="-2" attributes="0"/>
@@ -37,16 +41,12 @@
               </Group>
               <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                  <Component id="emailAdminTF" alignment="0" pref="98" max="32767" attributes="0"/>
+                  <Component id="emailAdminTF" alignment="0" max="32767" attributes="0"/>
                   <Component id="cellphoneNumberAdminTF" alignment="0" max="32767" attributes="0"/>
                   <Component id="surnameAdminTF" alignment="0" max="32767" attributes="0"/>
-                  <Component id="firstnameAdminTF" alignment="0" max="32767" attributes="0"/>
+                  <Component id="firstnameAdminTF" alignment="0" min="-2" pref="98" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="954" max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-              <Component id="confirmBtn" min="-2" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="513" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -54,7 +54,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="backBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="31" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="277" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="customerNameAdminLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="firstnameAdminTF" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -74,7 +74,7 @@
                   <Component id="customerEmailAdminLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="emailAdminTF" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="596" max="32767" attributes="0"/>
+              <EmptySpace pref="350" max="32767" attributes="0"/>
               <Component id="confirmBtn" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>

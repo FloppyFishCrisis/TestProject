@@ -28,11 +28,11 @@
               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="1239" max="32767" attributes="0"/>
               <Component id="insertBtn" min="-2" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace min="-2" pref="449" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="539" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
                   <Component id="roleLbl" min="-2" max="-2" attributes="0"/>
                   <Component id="passwordLbl" min="-2" max="-2" attributes="0"/>
@@ -44,7 +44,7 @@
                   <Component id="passwordTF" min="-2" pref="80" max="-2" attributes="0"/>
                   <Component id="roleTF" min="-2" pref="80" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="686" max="32767" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -52,7 +52,7 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <Component id="backBtn" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="211" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="291" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="usernameLbl" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="usernameTF" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -67,7 +67,7 @@
                   <Component id="roleLbl" min="-2" max="-2" attributes="0"/>
                   <Component id="roleTF" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="447" max="32767" attributes="0"/>
+              <EmptySpace pref="367" max="32767" attributes="0"/>
               <Component id="insertBtn" min="-2" max="-2" attributes="0"/>
           </Group>
       </Group>

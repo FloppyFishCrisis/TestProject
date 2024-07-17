@@ -9,12 +9,17 @@ package troyrenaudgr12pat;
  * @author troyr
  */
 public class SalesRecordsUI extends javax.swing.JFrame {
+    
+    private User adminUser;
+    private Customer currentCustomer;
 
     /**
      * Creates new form SalesRecordsUI
      */
-    public SalesRecordsUI() {
+    public SalesRecordsUI(User adminUser, Customer c) {
         initComponents();
+        this.adminUser = adminUser;
+        currentCustomer = c;
     }
 
     /**
@@ -26,21 +31,43 @@ public class SalesRecordsUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        btnBack = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        btnBack.setBackground(new java.awt.Color(204, 204, 255));
+        btnBack.setText("←");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1300, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 1250, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 800, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(btnBack)
+                .addGap(0, 777, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        AdminDashboardUI adb = new AdminDashboardUI(adminUser, currentCustomer);
+        adb.setVisible(true);
+        this.dispose();
+        // Handle the action when the "Back" button is clicked.
+        // It opens the LandingPageUI and closes the current window.
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -72,11 +99,12 @@ public class SalesRecordsUI extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SalesRecordsUI().setVisible(true);
+                //new SalesRecordsUI().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
     // End of variables declaration//GEN-END:variables
 }

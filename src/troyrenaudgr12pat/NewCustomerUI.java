@@ -76,8 +76,11 @@ public class NewCustomerUI extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addComponent(backBtn)
                 .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 1231, Short.MAX_VALUE)
+                .addComponent(confirmBtn))
             .addGroup(layout.createSequentialGroup()
-                .addGap(92, 92, 92)
+                .addGap(511, 511, 511)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(customerNameLbl)
                     .addComponent(customerSurnameLbl)
@@ -85,20 +88,17 @@ public class NewCustomerUI extends javax.swing.JFrame {
                     .addComponent(customerEmailLbl))
                 .addGap(65, 65, 65)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(emailTF, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                    .addComponent(emailTF)
                     .addComponent(cellphoneNumberTF)
                     .addComponent(surnameTF)
-                    .addComponent(firstnameTF))
-                .addContainerGap(954, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(confirmBtn))
+                    .addComponent(firstnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(backBtn)
-                .addGap(31, 31, 31)
+                .addGap(264, 264, 264)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerNameLbl)
                     .addComponent(firstnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -114,7 +114,7 @@ public class NewCustomerUI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(customerEmailLbl)
                     .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 596, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
                 .addComponent(confirmBtn))
         );
 
@@ -138,30 +138,24 @@ public class NewCustomerUI extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "First name and surname must be entered.");
             return;
         }
-        // Check if first name and surname fields are empty
 
         if (cellphoneNumber.isEmpty() && email.isEmpty()) {
             JOptionPane.showMessageDialog(null, "Either cellphone number or email must be entered.");
             return;
         }
-        // Check if both cellphone number and email fields are empty
 
         if (!cellphoneNumber.isEmpty() && !isValidCellphoneNumber(cellphoneNumber)) {
             JOptionPane.showMessageDialog(null, "Invalid cellphone number format. Please enter a valid number.");
             return;
         }
-        // Validate the cellphone number format if it is provided
 
         if (!email.isEmpty() && !isValidEmail(email)) {
             JOptionPane.showMessageDialog(null, "Invalid email format. Please enter a valid email.");
             return;
         }
-        // Validate the email format if it is provided
 
         Customer newCustomer = new Customer(firstname, surname, cellphoneNumber, email);
-        // Create a new Customer object with the provided details
-
-        // Insert the new Customer using DataHandler
+        
         DataHandler dh = new DataHandler();
         int result = dh.insertNewCustomer(newCustomer);
         

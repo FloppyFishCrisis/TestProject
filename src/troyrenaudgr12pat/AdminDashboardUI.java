@@ -39,36 +39,47 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         btnBack = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1300, 800));
 
+        manageProductsBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         manageProductsBtn.setText("Manage Products");
+        manageProductsBtn.setPreferredSize(new java.awt.Dimension(300, 100));
         manageProductsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageProductsBtnActionPerformed(evt);
             }
         });
 
+        manageCustomersBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         manageCustomersBtn.setText("Manage Customers");
+        manageCustomersBtn.setPreferredSize(new java.awt.Dimension(300, 100));
         manageCustomersBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageCustomersBtnActionPerformed(evt);
             }
         });
 
+        salesRecordsBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         salesRecordsBtn.setText("Sales Records");
+        salesRecordsBtn.setPreferredSize(new java.awt.Dimension(300, 100));
         salesRecordsBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 salesRecordsBtnActionPerformed(evt);
             }
         });
 
+        manageUsersBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         manageUsersBtn.setText("Manage Users");
+        manageUsersBtn.setPreferredSize(new java.awt.Dimension(300, 100));
         manageUsersBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 manageUsersBtnActionPerformed(evt);
             }
         });
 
+        logoutBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         logoutBtn.setText("Logout");
+        logoutBtn.setPreferredSize(new java.awt.Dimension(300, 100));
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 logoutBtnActionPerformed(evt);
@@ -87,37 +98,40 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(1026, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(manageUsersBtn)
-                    .addComponent(salesRecordsBtn)
-                    .addComponent(manageCustomersBtn)
-                    .addComponent(manageProductsBtn)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(logoutBtn)))
-                .addGap(149, 149, 149))
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 1250, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(481, 481, 481)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageUsersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(salesRecordsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageCustomersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(manageProductsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {logoutBtn, manageCustomersBtn, manageProductsBtn, manageUsersBtn, salesRecordsBtn});
+
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(btnBack)
-                .addGap(45, 45, 45)
-                .addComponent(manageProductsBtn)
+                .addGap(74, 74, 74)
+                .addComponent(manageProductsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(manageCustomersBtn)
+                .addComponent(manageCustomersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(salesRecordsBtn)
+                .addComponent(salesRecordsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(manageUsersBtn)
+                .addComponent(manageUsersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(logoutBtn)
-                .addContainerGap(545, Short.MAX_VALUE))
+                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(131, Short.MAX_VALUE))
         );
+
+        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {logoutBtn, manageCustomersBtn, manageProductsBtn, manageUsersBtn, salesRecordsBtn});
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -131,23 +145,27 @@ public class AdminDashboardUI extends javax.swing.JFrame {
     }//GEN-LAST:event_btnBackActionPerformed
 
     private void manageProductsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageProductsBtnActionPerformed
-        ProductManagementUI productsUI = new ProductManagementUI(adminUser, currentCustomer);
-        productsUI.setVisible(true);
+        ProductManagementUI pm = new ProductManagementUI(adminUser, currentCustomer);
+        pm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_manageProductsBtnActionPerformed
 
     private void manageCustomersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCustomersBtnActionPerformed
-        CustomerManagementUI customersUI = new CustomerManagementUI(adminUser, currentCustomer);
-        customersUI.setVisible(true);
+        CustomerManagementUI cm = new CustomerManagementUI(adminUser, currentCustomer);
+        cm.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_manageCustomersBtnActionPerformed
 
     private void salesRecordsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesRecordsBtnActionPerformed
-        SalesRecordsUI salesUI = new SalesRecordsUI();
-        salesUI.setVisible(true);
+        SalesRecordsUI sr = new SalesRecordsUI(adminUser, currentCustomer);
+        sr.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_salesRecordsBtnActionPerformed
 
     private void manageUsersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUsersBtnActionPerformed
-        UserManagementUI usersUI = new UserManagementUI(adminUser, currentCustomer);
-        usersUI.setVisible(true);
+        UserManagementUI um = new UserManagementUI(adminUser, currentCustomer);
+        um.setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_manageUsersBtnActionPerformed
 
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
@@ -158,49 +176,49 @@ public class AdminDashboardUI extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-//    public static void main(String args[]) {
-//        /* Set the Nimbus look and feel */
-//        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-//        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-//         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-//         */
-//        try {
-//            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-//                if ("Nimbus".equals(info.getName())) {
-//                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-//                    break;
-//
-//}
-//            }
-//        } catch (ClassNotFoundException ex) {
-//            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
-//
-//.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//
-//} catch (InstantiationException ex) {
-//            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
-//
-//.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//
-//} catch (IllegalAccessException ex) {
-//            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
-//
-//.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//
-//} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-//            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
-//
-//.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-//        }
-//        //</editor-fold>
-//
-//        /* Create and display the form */
-//        java.awt.EventQueue.invokeLater(new Runnable() {
-//            public void run() {
-//                new AdminDashboardUI().setVisible(true);
-//            }
-//        });
- //   }
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+
+}
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
+} catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
+
+.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                //new AdminDashboardUI().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBack;
