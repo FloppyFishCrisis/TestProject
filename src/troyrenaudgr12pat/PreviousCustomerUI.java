@@ -9,6 +9,9 @@ import javax.swing.table.DefaultTableModel;
 import java.util.ArrayList;
 
 /**
+ * This class represents the user interface for displaying and selecting
+ * previous customers. It allows the user to search, view, and select customers.
+ * The selected customer can then be confirmed for further actions.
  *
  * @author troyr
  */
@@ -20,7 +23,10 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
     private Customer currentCustomer;
 
     /**
-     * Creates new form PreviousCustomer
+     * Initializes the form and sets up the customer list.
+     *
+     * @param u The current user.
+     * @param c The current customer.
      */
     public PreviousCustomerUI(User u, Customer c) {
         initComponents();
@@ -40,32 +46,49 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        pcHelpBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
         confirmBtn = new javax.swing.JButton();
-        searchLbl = new javax.swing.JLabel();
-        searchTF = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCustomers = new javax.swing.JTable();
+        searchField = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        pcImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1315, 835));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
+        pcHelpBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        pcHelpBtn.setText("Help");
+        pcHelpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pcHelpBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(pcHelpBtn);
+        pcHelpBtn.setBounds(1210, 20, 60, 30);
+
+        backBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(backBtn);
+        backBtn.setBounds(10, 10, 70, 30);
 
+        confirmBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         confirmBtn.setText("Confirm");
         confirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmBtnActionPerformed(evt);
             }
         });
-
-        searchLbl.setText("Search:");
-
-        searchTF.setText("jTextField1");
+        getContentPane().add(confirmBtn);
+        confirmBtn.setBounds(1159, 733, 120, 50);
 
         tblCustomers.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -97,51 +120,54 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
             tblCustomers.getColumnModel().getColumn(4).setResizable(false);
         }
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 1176, Short.MAX_VALUE)
-                .addComponent(confirmBtn))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(57, 57, 57)
-                .addComponent(searchLbl)
-                .addGap(18, 18, 18)
-                .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(57, 57, 57)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 893, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(316, 316, 316)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(searchTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(searchLbl)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(136, 136, 136)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 453, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 165, Short.MAX_VALUE)
-                .addComponent(confirmBtn))
-        );
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(170, 140, 970, 540);
+
+        searchField.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        searchField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                searchFieldActionPerformed(evt);
+            }
+        });
+        getContentPane().add(searchField);
+        searchField.setBounds(240, 80, 130, 30);
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel1.setText("Search:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(170, 90, 60, 17);
+
+        pcImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\troyr\\Dropbox\\School Work\\IT\\TroyRenaudGr12PAT\\Troy_Gr_12_PAT_Images\\alexander-grey-62vi3TG5EDg-unsplash.jpg")); // NOI18N
+        pcImage.setMaximumSize(new java.awt.Dimension(1300, 800));
+        pcImage.setMinimumSize(new java.awt.Dimension(1315, 835));
+        pcImage.setPreferredSize(new java.awt.Dimension(1300, 800));
+        getContentPane().add(pcImage);
+        pcImage.setBounds(-1300, -340, 2640, 1650);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Handles the action of clicking the back button. Opens the
+     * CustomerSelectionUI and closes the current window.
+     *
+     * @param evt The event object containing details about the button click.
+     */
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         CustomerSelectionUI cs = new CustomerSelectionUI(currentUser, currentCustomer);
         cs.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 
+    /**
+     * Handles the action of clicking the confirm button. If a customer is
+     * selected, opens the SelectProductsForTabUI for that customer. Displays an
+     * error message if no customer is selected.
+     *
+     * @param evt The event object containing details about the button click.
+     */
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
-        if (selected != -1 && selected < customers.size()) {
+        if (selected != -1) {
             Customer selectedCustomer = customers.get(selected);
             SelectProductsForTabUI lp = new SelectProductsForTabUI(currentUser, selectedCustomer);
             lp.setVisible(true);
@@ -151,10 +177,78 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_confirmBtnActionPerformed
 
+    /**
+     * This method is called when a mouse click occurs on the customer table. It
+     * gets the selected row from the table and retrieves the customer ID from
+     * that row. Then, it looks for a matching customer in the customers list.
+     *
+     * @param evt The mouse event that triggered this method.
+     */
     private void tblCustomersMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblCustomersMouseClicked
-        selected = tblCustomers.getSelectedRow();
+        int row = tblCustomers.getSelectedRow();
+        if (row != -1) { // Check if a row is selected.
+            String customerID = tblCustomers.getValueAt(row, 0).toString(); // Get the customer ID as a string.
+            for (int i = 0; i < customers.size(); i++) {
+                try {
+                    int inCustomerID = Integer.parseInt(customerID); // Convert the customer ID string to an integer.
+                    if (customers.get(i).getCustomerID() == inCustomerID) { // Check if the customer ID matches.
+                        selected = i; // Set the selected index.
+                        break; // Exit the loop if a match is found.
+                    }
+                } catch (NumberFormatException e) {
+                    System.err.println(e);
+                }
+            }
+        }
     }//GEN-LAST:event_tblCustomersMouseClicked
 
+    /**
+     * Displays a help message dialog to guide users on how to use the Previous
+     * Customer UI.
+     *
+     * @param evt action event triggered by clicking the help button
+     */
+    private void pcHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pcHelpBtnActionPerformed
+        String helpMessage = "1. This interface allows you to view and select previous customers.\n\n"
+                + "2. The table displays the following information:\n"
+                + "   - CustomerID: The unique identifier for each customer.\n"
+                + "   - Firstname: The first name of the customer.\n"
+                + "   - Surname: The surname of the customer.\n"
+                + "   - Cellphone Number: The contact number of the customer.\n"
+                + "   - Email: The email address of the customer.\n\n"
+                + "3. Selecting a Customer:\n"
+                + "   - Click on a row in the table to select a customer.\n"
+                + "   - The selected customer's details will be highlighted.\n\n"
+                + "4. Confirming Selection:\n"
+                + "   - After selecting a customer, click the 'Confirm' button to proceed to the next step.\n"
+                + "   - If no customer is selected, an error message will prompt you to select one.\n\n"
+                + "7. Searching for a Customer:\n"
+                + "   - First type any detail about the customer (e.g. ID, name, surname, phone number, email) into the 'Search' text field."
+                + "   - Then click 'enter' to search for the customer."
+                + "5. Navigation:\n"
+                + "   - To return to the Customer Selection screen, click the 'Back' button.\n\n"
+                + "If you have any further questions, please contact support.";
+
+        JOptionPane.showMessageDialog(null, helpMessage, "Previous Customer UI Help", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_pcHelpBtnActionPerformed
+
+    /**
+     * Handles the action when the user enters text in the search field and
+     * presses enter. It takes the input, converts it to lowercase, and calls
+     * the filterCustomers method to update the table.
+     *
+     * @param evt The event triggered when the user interacts with the search
+     * field.
+     */
+    private void searchFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchFieldActionPerformed
+        String searchInput = searchField.getText().toLowerCase();
+        filterCustomers(searchInput);
+    }//GEN-LAST:event_searchFieldActionPerformed
+
+    /**
+     * Populates the table with customer data from the database. Updates the
+     * table model with the list of customers.
+     */
     public void addTable() {
         DataHandler dh = new DataHandler();
         customers = dh.getAllCustomers();
@@ -174,6 +268,40 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
     }
 
     /**
+     * Filters the customers based on the search input. It checks the customer
+     * list for any matches with the search input. Updates the table and resets
+     * the selected index.
+     *
+     * @param searchInput The input string to search for in the customer list.
+     */
+    private void filterCustomers(String searchInput) {
+        DefaultTableModel dtm = (DefaultTableModel) tblCustomers.getModel();
+        dtm.setRowCount(0); // Clear existing rows
+
+        // Loop through each customer and check if their first name, last name, phone number, or email contains the search input
+        for (int i = 0; i < customers.size(); i++) {
+            if (customers.get(i).getCustomerFirstname().toLowerCase().contains(searchInput)
+                    || customers.get(i).getCustomerSurname().toLowerCase().contains(searchInput)
+                    || customers.get(i).getCustomerCellphoneNumber().contains(searchInput)
+                    || customers.get(i).getCustomerEmail().toLowerCase().contains(searchInput)) {
+
+                // Add the matched customer to the table
+                Object[] customerRow = {
+                    customers.get(i).getCustomerID(),
+                    customers.get(i).getCustomerFirstname(),
+                    customers.get(i).getCustomerSurname(),
+                    customers.get(i).getCustomerCellphoneNumber(),
+                    customers.get(i).getCustomerEmail()
+                };
+                dtm.addRow(customerRow);
+            }
+        }
+
+        // Reset the selection index after filtering
+        selected = -1;
+    }
+
+    /**
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -187,16 +315,24 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PreviousCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PreviousCustomerUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PreviousCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PreviousCustomerUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PreviousCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PreviousCustomerUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PreviousCustomerUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PreviousCustomerUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -212,9 +348,11 @@ public class PreviousCustomerUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
     private javax.swing.JButton confirmBtn;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel searchLbl;
-    private javax.swing.JTextField searchTF;
+    private javax.swing.JButton pcHelpBtn;
+    private javax.swing.JLabel pcImage;
+    private javax.swing.JTextField searchField;
     private javax.swing.JTable tblCustomers;
     // End of variables declaration//GEN-END:variables
 }

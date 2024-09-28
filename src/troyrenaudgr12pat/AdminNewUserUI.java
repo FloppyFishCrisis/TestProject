@@ -7,8 +7,7 @@ package troyrenaudgr12pat;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author troyr
+ * This class is for the Admin to add new users through the UI.
  */
 public class AdminNewUserUI extends javax.swing.JFrame {
 
@@ -16,7 +15,10 @@ public class AdminNewUserUI extends javax.swing.JFrame {
     private Customer currentCustomer;
 
     /**
-     * Creates new form AdminNewUserUI
+     * Constructor to create a new AdminNewUserUI form.
+     *
+     * @param adminUser The user who is an admin and logged in.
+     * @param c The current customer being handled.
      */
     public AdminNewUserUI(User adminUser, Customer c) {
         initComponents();
@@ -41,83 +43,103 @@ public class AdminNewUserUI extends javax.swing.JFrame {
         usernameLbl = new javax.swing.JLabel();
         passwordLbl = new javax.swing.JLabel();
         roleLbl = new javax.swing.JLabel();
+        anuHelpBtn = new javax.swing.JButton();
+        anuImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1315, 835));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
-        backBtn.setText("←");
+        backBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(backBtn);
+        backBtn.setBounds(20, 20, 70, 30);
 
-        insertBtn.setText("Insert");
+        insertBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        insertBtn.setText("Confirm");
         insertBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(insertBtn);
+        insertBtn.setBounds(1160, 730, 120, 50);
 
+        usernameTF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(usernameTF);
+        usernameTF.setBounds(630, 300, 140, 30);
+
+        passwordTF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(passwordTF);
+        passwordTF.setBounds(630, 350, 140, 30);
+
+        roleTF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(roleTF);
+        roleTF.setBounds(630, 400, 140, 30);
+
+        usernameLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        usernameLbl.setForeground(java.awt.Color.white);
         usernameLbl.setText("Username:");
+        getContentPane().add(usernameLbl);
+        usernameLbl.setBounds(540, 310, 74, 17);
 
+        passwordLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        passwordLbl.setForeground(java.awt.Color.white);
         passwordLbl.setText("Password:");
+        getContentPane().add(passwordLbl);
+        passwordLbl.setBounds(540, 360, 72, 17);
 
+        roleLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        roleLbl.setForeground(java.awt.Color.white);
         roleLbl.setText("Role:");
+        getContentPane().add(roleLbl);
+        roleLbl.setBounds(570, 410, 40, 17);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 1239, Short.MAX_VALUE)
-                .addComponent(insertBtn))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(539, 539, 539)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(roleLbl)
-                    .addComponent(passwordLbl)
-                    .addComponent(usernameLbl))
-                .addGap(33, 33, 33)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(roleTF, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(291, 291, 291)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernameLbl)
-                    .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(passwordLbl)
-                    .addComponent(passwordTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(roleLbl)
-                    .addComponent(roleTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 367, Short.MAX_VALUE)
-                .addComponent(insertBtn))
-        );
+        anuHelpBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        anuHelpBtn.setText("Help");
+        anuHelpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                anuHelpBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(anuHelpBtn);
+        anuHelpBtn.setBounds(1220, 20, 60, 30);
+
+        anuImage.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        anuImage.setForeground(java.awt.Color.white);
+        anuImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\troyr\\Dropbox\\School Work\\IT\\TroyRenaudGr12PAT\\Troy_Gr_12_PAT_Images\\milad-fakurian-bexwsdM5BCw-unsplash.jpg")); // NOI18N
+        getContentPane().add(anuImage);
+        anuImage.setBounds(-1140, -160, 2700, 960);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This method is called when the Insert/Confirm button is clicked. It creates a new
+     * user and inserts the data into the database.
+     *
+     * @param evt The event when the button is pressed.
+     */
     private void insertBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertBtnActionPerformed
         String username = usernameTF.getText().trim();
         String password = passwordTF.getText().trim();
         String role = roleTF.getText().trim();
 
-        // Basic validation
+        // Validation to see if fields are empty
         if (username.isEmpty() || password.isEmpty() || role.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All fields must be filled.");
+            return;
+        }
+        
+        // Validate role (roles: Admin, User)
+        if (!(role.equalsIgnoreCase("Admin") || role.equalsIgnoreCase("User"))) {
+            JOptionPane.showMessageDialog(null, "Invalid role. Please enter 'Admin' or 'User'.");
             return;
         }
 
@@ -128,22 +150,50 @@ public class AdminNewUserUI extends javax.swing.JFrame {
         DataHandler dh = new DataHandler();
         int result = dh.insertNewUser(newUser);
 
-        if (result > 0) {
+        if (result > 0) { //if a new user was entered correctly the result will be > 0 therefore it can execute this code
             JOptionPane.showMessageDialog(null, "User successfully added.");
-            AdminDashboardUI ad = new AdminDashboardUI(newUser, currentCustomer);
+            AdminUserManagementUI ad = new AdminUserManagementUI(newUser, currentCustomer);
             ad.setVisible(true);
             this.dispose();
-        } else {
+        } else { // if user is not entered correctly, this message dialog will be displayed
             JOptionPane.showMessageDialog(null, "Error adding user. Please try again.");
         }
-    
     }//GEN-LAST:event_insertBtnActionPerformed
 
+    /**
+     * This method is called when the back button is clicked. It returns to the
+     * Admin User Management UI.
+     *
+     * @param evt The event triggered by clicking the back button.
+     */
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        UserManagementUI um = new UserManagementUI(adminUser, currentCustomer);
+        AdminUserManagementUI um = new AdminUserManagementUI(adminUser, currentCustomer);
         um.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
+
+    /**
+     * Displays a help message dialog to guide users on how to use the AdminNewUserUI page.
+     *
+     * @param evt action event triggered by clicking the help button
+     */
+    private void anuHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anuHelpBtnActionPerformed
+        String helpMessage = "1. This interface allows an admin user to add new users to the system.\n\n"
+                + "2. Fields to fill in:\n"
+                + "   - Username: Enter the new user's desired username.\n"
+                + "   - Password: Enter the password for the new user.\n"
+                + "   - Role: Define the role of the user (e.g., 'Admin', 'User').\n\n"
+                + "3. How to use:\n"
+                + "   - Fill in all the fields (Username, Password, and Role).\n"
+                + "   - Click the 'Insert' button to add the new user.\n"
+                + "   - If all the fields are filled correctly, the user will be added, and you will receive a confirmation message.\n"
+                + "   - If any fields are missing, an error message will prompt you to complete the fields.\n\n"
+                + "4. Navigation:\n"
+                + "   - To go back to the Admin User Management screen, click the 'Back' button.\n\n"
+                + "For any further assistance, please contact system support.";
+
+        JOptionPane.showMessageDialog(null, helpMessage, "Admin New User Help", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_anuHelpBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -181,6 +231,8 @@ public class AdminNewUserUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton anuHelpBtn;
+    private javax.swing.JLabel anuImage;
     private javax.swing.JButton backBtn;
     private javax.swing.JButton insertBtn;
     private javax.swing.JLabel passwordLbl;

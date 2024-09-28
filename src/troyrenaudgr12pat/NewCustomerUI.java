@@ -4,20 +4,21 @@
  */
 package troyrenaudgr12pat;
 
-import java.sql.SQLException;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author troyr
+ * This class represents the user interface for adding a new customer.
  */
 public class NewCustomerUI extends javax.swing.JFrame {
 
     private User currentUser;
     private Customer currentCustomer;
-    
+
     /**
      * Creates new form NewCustomer
+     *
+     * @param u The current user
+     * @param c The current customer
      */
     public NewCustomerUI(User u, Customer c) {
         initComponents();
@@ -44,124 +45,146 @@ public class NewCustomerUI extends javax.swing.JFrame {
         customerEmailLbl = new javax.swing.JLabel();
         emailTF = new javax.swing.JTextField();
         confirmBtn = new javax.swing.JButton();
+        ncHelpBtn = new javax.swing.JButton();
+        ncImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1315, 835));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
+        backBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(backBtn);
+        backBtn.setBounds(20, 20, 70, 30);
 
+        customerNameLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         customerNameLbl.setText("Name:");
+        getContentPane().add(customerNameLbl);
+        customerNameLbl.setBounds(450, 270, 51, 30);
+        getContentPane().add(firstnameTF);
+        firstnameTF.setBounds(660, 270, 120, 30);
 
+        customerSurnameLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         customerSurnameLbl.setText("Surname:");
+        getContentPane().add(customerSurnameLbl);
+        customerSurnameLbl.setBounds(450, 320, 75, 30);
+        getContentPane().add(surnameTF);
+        surnameTF.setBounds(660, 320, 120, 30);
 
+        customerCellphoneNumberLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         customerCellphoneNumberLbl.setText("Cellphone Number:");
+        getContentPane().add(customerCellphoneNumberLbl);
+        customerCellphoneNumberLbl.setBounds(450, 370, 151, 30);
+        getContentPane().add(cellphoneNumberTF);
+        cellphoneNumberTF.setBounds(660, 370, 120, 30);
 
+        customerEmailLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         customerEmailLbl.setText("Email:");
+        getContentPane().add(customerEmailLbl);
+        customerEmailLbl.setBounds(450, 420, 48, 30);
+        getContentPane().add(emailTF);
+        emailTF.setBounds(660, 420, 120, 30);
 
+        confirmBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         confirmBtn.setText("Confirm");
         confirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(confirmBtn);
+        confirmBtn.setBounds(1160, 730, 120, 50);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 1231, Short.MAX_VALUE)
-                .addComponent(confirmBtn))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(511, 511, 511)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerNameLbl)
-                    .addComponent(customerSurnameLbl)
-                    .addComponent(customerCellphoneNumberLbl)
-                    .addComponent(customerEmailLbl))
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(emailTF)
-                    .addComponent(cellphoneNumberTF)
-                    .addComponent(surnameTF)
-                    .addComponent(firstnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(264, 264, 264)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerNameLbl)
-                    .addComponent(firstnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerSurnameLbl)
-                    .addComponent(surnameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerCellphoneNumberLbl)
-                    .addComponent(cellphoneNumberTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerEmailLbl)
-                    .addComponent(emailTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 363, Short.MAX_VALUE)
-                .addComponent(confirmBtn))
-        );
+        ncHelpBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ncHelpBtn.setText("Help");
+        getContentPane().add(ncHelpBtn);
+        ncHelpBtn.setBounds(1210, 20, 60, 30);
+
+        ncImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\troyr\\Dropbox\\School Work\\IT\\TroyRenaudGr12PAT\\Troy_Gr_12_PAT_Images\\alexander-grey-62vi3TG5EDg-unsplash.jpg")); // NOI18N
+        ncImage.setMaximumSize(new java.awt.Dimension(1300, 800));
+        ncImage.setMinimumSize(new java.awt.Dimension(1315, 835));
+        ncImage.setPreferredSize(new java.awt.Dimension(1300, 800));
+        getContentPane().add(ncImage);
+        ncImage.setBounds(-1340, -360, 2660, 1650);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * This method handles the action when the back button is clicked. It opens
+     * the CustomerSelectionUI form and closes the current form.
+     *
+     * @param evt The event that triggered this action
+     */
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         CustomerSelectionUI cs = new CustomerSelectionUI(currentUser, currentCustomer);
         cs.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
 
+    /**
+     * This method handles the action when the confirm button is clicked. It
+     * validates the input fields, creates a new customer, and saves it.
+     *
+     * @param evt The event that triggered this action
+     */
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
         String firstname = firstnameTF.getText().trim();
         String surname = surnameTF.getText().trim();
         String cellphoneNumber = cellphoneNumberTF.getText().trim();
         String email = emailTF.getText().trim();
-        // Extracts text from the text fields and trims spaces
 
+        // Ensure that both first name and surname are provided
         if (firstname.isEmpty() || surname.isEmpty()) {
             JOptionPane.showMessageDialog(null, "First name and surname must be entered.");
             return;
         }
 
+        // Ensure at least one of the contact details (cellphone or email) is provided
         if (cellphoneNumber.isEmpty() && email.isEmpty()) {
-            JOptionPane.showMessageDialog(null, "Either cellphone number or email must be entered.");
+            JOptionPane.showMessageDialog(null, "Please enter either a cellphone number or an email.");
             return;
         }
 
+        // If cellphone number is entered, validate the format
         if (!cellphoneNumber.isEmpty() && !isValidCellphoneNumber(cellphoneNumber)) {
-            JOptionPane.showMessageDialog(null, "Invalid cellphone number format. Please enter a valid number.");
+            JOptionPane.showMessageDialog(null, "Invalid cellphone number format. Please enter a valid 10-digit or international number.");
             return;
         }
 
+        // If email is entered, validate the format
         if (!email.isEmpty() && !isValidEmail(email)) {
             JOptionPane.showMessageDialog(null, "Invalid email format. Please enter a valid email.");
             return;
         }
 
+        // If validation passes, create a new customer object
         Customer newCustomer = new Customer(firstname, surname, cellphoneNumber, email);
-        
+
         DataHandler dh = new DataHandler();
-        int result = dh.insertNewCustomer(newCustomer);
+        int customerID = dh.insertNewCustomer(newCustomer); // Method returns new customerID
+
+        /**
+         * If the customer ID is greater than 0 (indicating success in the
+         * adding of the customer to the database): - Retrieves the newly added
+         * customer using the customer ID. - Displays a success message to the
+         * user. - Opens the 'SelectProductsForTabUI' window to allow the user
+         * to select products for the new customer. - Closes the current window.
+         * But if the customer ID is 0 or less (indicating an error during
+         * adding the customer to the database): - Displays an error message to
+         * the user.
+         */
         
-        if (result > 0) {
+        if (customerID > 0) {
+            newCustomer = dh.getCustomerByID(customerID); // Retrieve the customer with the new ID
             JOptionPane.showMessageDialog(null, "Customer successfully added.");
-            SelectProductsForTabUI lp = new SelectProductsForTabUI(currentUser, currentCustomer);
+            SelectProductsForTabUI lp = new SelectProductsForTabUI(currentUser, newCustomer);
             lp.setVisible(true);
             this.dispose();
         } else {
@@ -169,15 +192,33 @@ public class NewCustomerUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_confirmBtnActionPerformed
 
-    // Utility methods for validation
+    /**
+     * This method checks if the cellphone number entered is in a valid format.
+     * It supports both local and international formats.
+     *
+     * @param cellphoneNumber The cellphone number to validate
+     * @return true if the format is valid, false otherwise
+     */
     private boolean isValidCellphoneNumber(String cellphoneNumber) {
-        return cellphoneNumber.matches("\\d{10}");
-        // Example pattern for a 10-digit number, adjust the pattern based on your requirements
+        // Regular expression to validate South African numbers or international numbers
+        return cellphoneNumber.matches("\\d{10}") || cellphoneNumber.matches("\\+\\d{1,3}\\d{4,14}(?:\\d{1,2})?");
+
+        // Explanation:
+        // \\d{10}        : Validates local (South African) numbers with 10 digits starting with 0
+        // \\+            : Starts with '+' for international numbers
+        // \\d{1,3}       : Country code with 1 to 3 digits
+        // \\d{4,14}      : Main part of the number with 4 to 14 digits
+        // (?:\\d{1,2})?  : Optional extension with 1 to 2 digits
     }
 
+    /**
+     * Validates the format of an email address.
+     *
+     * @param email The email address to validate
+     * @return true if the format is correct, false otherwise
+     */
     private boolean isValidEmail(String email) {
-        return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
-        // Simple email pattern validation, you can enhance it based on your needs
+        return email.trim().matches("^[A-Za-z0-9+_.-]+@(.+)$"); //email format reference: https://www.oreilly.com/library/view/regular-expressions-cookbook/9781449327453/ch04s01.html
     }
 
     /**
@@ -226,6 +267,8 @@ public class NewCustomerUI extends javax.swing.JFrame {
     private javax.swing.JLabel customerSurnameLbl;
     private javax.swing.JTextField emailTF;
     private javax.swing.JTextField firstnameTF;
+    private javax.swing.JButton ncHelpBtn;
+    private javax.swing.JLabel ncImage;
     private javax.swing.JTextField surnameTF;
     // End of variables declaration//GEN-END:variables
 }

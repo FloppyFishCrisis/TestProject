@@ -4,9 +4,10 @@
  */
 package troyrenaudgr12pat;
 
+import javax.swing.JOptionPane;
+
 /**
- *
- * @author troyr
+ * This class manages the Admin buttons in the UI for navigation.
  */
 public class AdminDashboardUI extends javax.swing.JFrame {
 
@@ -14,7 +15,11 @@ public class AdminDashboardUI extends javax.swing.JFrame {
     private Customer currentCustomer;
 
     /**
-     * Creates new form AdminDashboardUI
+     * Constructor for the AdminDashboardUI class. Initializes the form and sets
+     * the admin user and current customer.
+     *
+     * @param adminUser the User object representing the admin
+     * @param c the Customer object representing the current customer
      */
     public AdminDashboardUI(User adminUser, Customer c) {
         initComponents();
@@ -37,11 +42,15 @@ public class AdminDashboardUI extends javax.swing.JFrame {
         manageUsersBtn = new javax.swing.JButton();
         logoutBtn = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        adbHelpBtn = new javax.swing.JButton();
+        adbImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1300, 800));
+        setMinimumSize(new java.awt.Dimension(1315, 835));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
-        manageProductsBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        manageProductsBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         manageProductsBtn.setText("Manage Products");
         manageProductsBtn.setPreferredSize(new java.awt.Dimension(300, 100));
         manageProductsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -49,8 +58,10 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                 manageProductsBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(manageProductsBtn);
+        manageProductsBtn.setBounds(500, 90, 300, 100);
 
-        manageCustomersBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        manageCustomersBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         manageCustomersBtn.setText("Manage Customers");
         manageCustomersBtn.setPreferredSize(new java.awt.Dimension(300, 100));
         manageCustomersBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -58,8 +69,10 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                 manageCustomersBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(manageCustomersBtn);
+        manageCustomersBtn.setBounds(500, 210, 300, 100);
 
-        salesRecordsBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        salesRecordsBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         salesRecordsBtn.setText("Sales Records");
         salesRecordsBtn.setPreferredSize(new java.awt.Dimension(300, 100));
         salesRecordsBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -67,8 +80,10 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                 salesRecordsBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(salesRecordsBtn);
+        salesRecordsBtn.setBounds(500, 330, 300, 100);
 
-        manageUsersBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        manageUsersBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         manageUsersBtn.setText("Manage Users");
         manageUsersBtn.setPreferredSize(new java.awt.Dimension(300, 100));
         manageUsersBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -76,8 +91,10 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                 manageUsersBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(manageUsersBtn);
+        manageUsersBtn.setBounds(500, 450, 300, 100);
 
-        logoutBtn.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        logoutBtn.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         logoutBtn.setText("Logout");
         logoutBtn.setPreferredSize(new java.awt.Dimension(300, 100));
         logoutBtn.addActionListener(new java.awt.event.ActionListener() {
@@ -85,93 +102,128 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                 logoutBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(logoutBtn);
+        logoutBtn.setBounds(500, 570, 300, 100);
 
         btnBack.setBackground(new java.awt.Color(204, 204, 255));
-        btnBack.setText("←");
+        btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBack);
+        btnBack.setBounds(20, 20, 70, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 1250, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(481, 481, 481)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manageUsersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(salesRecordsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manageCustomersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(manageProductsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
+        adbHelpBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        adbHelpBtn.setText("Help");
+        adbHelpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                adbHelpBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(adbHelpBtn);
+        adbHelpBtn.setBounds(1220, 20, 60, 30);
 
-        layout.linkSize(javax.swing.SwingConstants.HORIZONTAL, new java.awt.Component[] {logoutBtn, manageCustomersBtn, manageProductsBtn, manageUsersBtn, salesRecordsBtn});
-
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnBack)
-                .addGap(74, 74, 74)
-                .addComponent(manageProductsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(manageCustomersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(salesRecordsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(manageUsersBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(logoutBtn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(131, Short.MAX_VALUE))
-        );
-
-        layout.linkSize(javax.swing.SwingConstants.VERTICAL, new java.awt.Component[] {logoutBtn, manageCustomersBtn, manageProductsBtn, manageUsersBtn, salesRecordsBtn});
+        adbImage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        adbImage.setForeground(java.awt.Color.white);
+        adbImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\troyr\\Dropbox\\School Work\\IT\\TroyRenaudGr12PAT\\Troy_Gr_12_PAT_Images\\milad-fakurian-9xCvw544PWQ-unsplash.jpg")); // NOI18N
+        getContentPane().add(adbImage);
+        adbImage.setBounds(-2340, 0, 3730, 3700);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Action performed when the "Back" button is clicked. This method opens the
+     * LoginPageUI and disposes of the current window.
+     *
+     * @param evt the event that triggers this action (button click)
+     */
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         LoginPageUI lp = new LoginPageUI();
         lp.setVisible(true);
         this.dispose();
-//         Handle the action when the "Back" button is clicked.
-//         It opens the LandingPageUI and closes the current window.
     }//GEN-LAST:event_btnBackActionPerformed
 
+    /**
+     * Action performed when "Manage Products" button is clicked. This method
+     * opens the AdminProductManagementUI and closes the current window.
+     *
+     * @param evt the event that triggers this action (button click)
+     */
     private void manageProductsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageProductsBtnActionPerformed
-        ProductManagementUI pm = new ProductManagementUI(adminUser, currentCustomer);
+        AdminProductManagementUI pm = new AdminProductManagementUI(adminUser, currentCustomer);
         pm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_manageProductsBtnActionPerformed
 
+    /**
+     * Action performed when "Manage Customers" button is clicked. This method
+     * opens the AdminCustomerManagementUI and closes the current window.
+     *
+     * @param evt the event that triggers this action (button click)
+     */
     private void manageCustomersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageCustomersBtnActionPerformed
-        CustomerManagementUI cm = new CustomerManagementUI(adminUser, currentCustomer);
+        AdminCustomerManagementUI cm = new AdminCustomerManagementUI(adminUser, currentCustomer);
         cm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_manageCustomersBtnActionPerformed
 
+    /**
+     * Action performed when "Sales Records" button is clicked. This method
+     * opens the AdminSalesRecordsUI and closes the current window.
+     *
+     * @param evt the event that triggers this action (button click)
+     */
     private void salesRecordsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salesRecordsBtnActionPerformed
-        SalesRecordsUI sr = new SalesRecordsUI(adminUser, currentCustomer);
+        AdminSalesRecordsUI sr = new AdminSalesRecordsUI(adminUser, currentCustomer);
         sr.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_salesRecordsBtnActionPerformed
 
+    /**
+     * Action performed when "Manage Users" button is clicked. This method opens
+     * the AdminUserManagementUI and closes the current window.
+     *
+     * @param evt the event that triggers this action (button click)
+     */
     private void manageUsersBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_manageUsersBtnActionPerformed
-        UserManagementUI um = new UserManagementUI(adminUser, currentCustomer);
+        AdminUserManagementUI um = new AdminUserManagementUI(adminUser, currentCustomer);
         um.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_manageUsersBtnActionPerformed
 
+    /**
+     * Action performed when "Logout" button is clicked. This method logs the
+     * user out by opening the LoginPageUI and closing the current window.
+     *
+     * @param evt the event that triggers this action (button click)
+     */
     private void logoutBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutBtnActionPerformed
         new LoginPageUI().setVisible(true);
         dispose();
     }//GEN-LAST:event_logoutBtnActionPerformed
+
+    /**
+     * Displays a help message dialog to guide users on how to navigate and use
+     * the Admin Dashboard.
+     *
+     * @param evt action event triggered by clicking the help button
+     */
+    private void adbHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adbHelpBtnActionPerformed
+        String helpMessage = "Welcome to the Admin Dashboard!\n\n"
+                + "1. Manage Products: Click the 'Manage Products' button to add, edit, or remove products from the inventory.\n\n"
+                + "2. Manage Customers: Click 'Manage Customers' to view, add, edit, or remove customers from the system.\n\n"
+                + "3. Sales Records: Click 'Sales Records' to view and manage sales data, including tab collections and payments.\n\n"
+                + "4. Manage Users: Use this option to add, edit, or remove users who can access the system.\n\n"
+                + "5. Logout: Click 'Logout' to log out and return to the login page.\n\n"
+                + "6. Back Button: Click the '←' button to return to the previous screen.\n\n"
+                + "If you encounter any issues or need further assistance, please contact support.";
+
+        JOptionPane.showMessageDialog(null, helpMessage, "Admin Dashboard Help", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_adbHelpBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -188,27 +240,23 @@ public class AdminDashboardUI extends javax.swing.JFrame {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
 
-}
+                }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
+            java.util.logging.Logger.getLogger(AdminDashboardUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(AdminDashboardUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-} catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(AdminDashboardUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
 
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-
-} catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(AdminDashboardUI.class  
-
-.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(AdminDashboardUI.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -221,6 +269,8 @@ public class AdminDashboardUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton adbHelpBtn;
+    private javax.swing.JLabel adbImage;
     private javax.swing.JButton btnBack;
     private javax.swing.JButton logoutBtn;
     private javax.swing.JButton manageCustomersBtn;

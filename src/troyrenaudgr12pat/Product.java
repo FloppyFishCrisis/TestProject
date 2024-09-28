@@ -4,82 +4,116 @@
  */
 package troyrenaudgr12pat;
 
-import java.time.LocalDate;
-
 /**
- *
- * @author troyr
+ * Class to manage product details, including constructors and getter methods.
  */
 public class Product {
+
     private int productID;
     private String productName;
     private String category;
-    private String barcode;
+    private String barcode; // I have left the barcode as a string because it is up to the program user to decide on what their barcode is. They are even able to put text into a barcode generator.
     private double price;
-    private int quantity;
-    private LocalDate expiryDate;
 
-    public Product(int productID, String productName, String category, String barcode, double price, int quantity, LocalDate expiryDate) {
+    /**
+     * Constructor to create a product with all details, usually from the
+     * database.
+     *
+     * @param productID the unique ID of the product
+     * @param productName the name of the product
+     * @param category the category of the product
+     * @param barcode the barcode of the product
+     * @param price the price of the product
+     */
+    public Product(int productID, String productName, String category, String barcode, double price) {
         this.productID = productID;
         this.productName = productName;
         this.category = category;
         this.barcode = barcode;
         this.price = price;
-        this.quantity = quantity; 
-        this.expiryDate = expiryDate;
     }
 
     /**
-    * Constructor method for the Product class
-    * This will only be used to insert new products.
-    * @param productName - the name of the product.
-    * @param category - the category of the product.
-    * @param barcode - the barcode of the product.
-    * @param price - the price of the product.
-    * @param quantity - the quantity of the product.
-    * @param expiryDate - the expiry date of the product.
-    */
-    public Product(String productName, String category, String barcode, double price, int quantity, LocalDate expiryDate) {
+     * Constructor for a new product without an ID (e.g. before saving to a
+     * database). This will only be used when inserting a new product.
+     *
+     * @param productName the name of the product
+     * @param category the category of the product
+     * @param barcode the barcode of the product
+     * @param price the price of the product
+     */
+    public Product(String productName, String category, String barcode, double price) {
         this.productName = productName;
         this.category = category;
         this.barcode = barcode;
         this.price = price;
-        this.quantity = quantity;
-        this.expiryDate = expiryDate;
     }
 
+    /**
+     * Constructor for creating a product with only productID and productName.
+     * This is used for specific cases like displaying product names for orders.
+     *
+     * @param productID the unique ID of the product
+     * @param productName the name of the product
+     */
+    public Product(int productID, String productName) { //for getAllTabProductsForKitchenDisplay() method in datahandler
+        this.productID = productID;
+        this.productName = productName;
+    }
+
+    /**
+     * Gets the unique ID of the product.
+     *
+     * @return the product ID
+     */
     public int getProductID() {
         return productID;
     }
 
+    /**
+     * Gets the name of the product.
+     *
+     * @return the product name
+     */
     public String getProductName() {
         return productName;
     }
 
+    /**
+     * Gets the category of the product.
+     *
+     * @return the product category
+     */
     public String getCategory() {
         return category;
     }
 
+    /**
+     * Gets the barcode of the product.
+     *
+     * @return the product barcode
+     */
     public String getBarcode() {
         return barcode;
     }
 
+    /**
+     * Gets the price of the product.
+     *
+     * @return the product price
+     */
     public double getPrice() {
         return price;
     }
 
-    public int getQuantity() {
-        return quantity;
-    }
-
-    public LocalDate getExpiryDate() {
-        return expiryDate;
-    }
-
+    /**
+     * Provides a string representation of the product object. This is useful
+     * for debugging or displaying product details.
+     *
+     * @return a string containing product details
+     */
     @Override
     public String toString() {
-        return "Products{" + "productID=" + productID + ", productName=" + productName + ", category=" + category + ", barcode=" + barcode + ", price=" + price + ", quantity=" + quantity + ", expiryDate=" + expiryDate + '}';
+        return "Products{" + "productID=" + productID + ", productName=" + productName + ", category=" + category + ", barcode=" + barcode + ", price=" + price + '}';
     }
-    
-    
 }

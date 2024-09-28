@@ -7,16 +7,20 @@ package troyrenaudgr12pat;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author troyr
+ * AdminNewCustomerUI allows an admin to create a new customer with details like
+ * name, surname, cellphone number, and email.
  */
 public class AdminNewCustomerUI extends javax.swing.JFrame {
-    
+
     private User adminUser;
     private Customer currentCustomer;
 
     /**
-     * Creates new form AdminNewCustomerUI
+     * Constructor that initializes the AdminNewCustomerUI form. It sets the
+     * current admin user and the customer details.
+     *
+     * @param adminUser the admin user currently logged in
+     * @param c the current customer (can be null if adding new customer)
      */
     public AdminNewCustomerUI(User adminUser, Customer c) {
         initComponents();
@@ -43,89 +47,106 @@ public class AdminNewCustomerUI extends javax.swing.JFrame {
         cellphoneNumberAdminTF = new javax.swing.JTextField();
         customerEmailAdminLbl = new javax.swing.JLabel();
         emailAdminTF = new javax.swing.JTextField();
+        ancHelpBtn = new javax.swing.JButton();
+        acmImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1315, 835));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
+        confirmBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         confirmBtn.setText("Confirm");
         confirmBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 confirmBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(confirmBtn);
+        confirmBtn.setBounds(1169, 733, 110, 50);
 
+        backBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(backBtn);
+        backBtn.setBounds(20, 20, 70, 30);
 
+        customerNameAdminLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        customerNameAdminLbl.setForeground(java.awt.Color.white);
         customerNameAdminLbl.setText("Name:");
+        getContentPane().add(customerNameAdminLbl);
+        customerNameAdminLbl.setBounds(600, 280, 45, 17);
 
+        firstnameAdminTF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(firstnameAdminTF);
+        firstnameAdminTF.setBounds(690, 270, 120, 30);
+
+        customerSurnameAdminLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        customerSurnameAdminLbl.setForeground(java.awt.Color.white);
         customerSurnameAdminLbl.setText("Surname:");
+        getContentPane().add(customerSurnameAdminLbl);
+        customerSurnameAdminLbl.setBounds(580, 330, 67, 17);
 
+        surnameAdminTF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(surnameAdminTF);
+        surnameAdminTF.setBounds(690, 320, 120, 30);
+
+        customerCellphoneNumberAdminLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        customerCellphoneNumberAdminLbl.setForeground(java.awt.Color.white);
         customerCellphoneNumberAdminLbl.setText("Cellphone Number:");
+        getContentPane().add(customerCellphoneNumberAdminLbl);
+        customerCellphoneNumberAdminLbl.setBounds(510, 380, 133, 14);
 
+        cellphoneNumberAdminTF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(cellphoneNumberAdminTF);
+        cellphoneNumberAdminTF.setBounds(690, 370, 120, 30);
+
+        customerEmailAdminLbl.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        customerEmailAdminLbl.setForeground(java.awt.Color.white);
         customerEmailAdminLbl.setText("Email:");
+        getContentPane().add(customerEmailAdminLbl);
+        customerEmailAdminLbl.setBounds(600, 430, 41, 17);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 1231, Short.MAX_VALUE)
-                .addComponent(confirmBtn))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerNameAdminLbl)
-                    .addComponent(customerSurnameAdminLbl)
-                    .addComponent(customerCellphoneNumberAdminLbl)
-                    .addComponent(customerEmailAdminLbl))
-                .addGap(65, 65, 65)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(emailAdminTF)
-                    .addComponent(cellphoneNumberAdminTF)
-                    .addComponent(surnameAdminTF)
-                    .addComponent(firstnameAdminTF, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(513, 513, 513))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(277, 277, 277)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerNameAdminLbl)
-                    .addComponent(firstnameAdminTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(customerSurnameAdminLbl)
-                    .addComponent(surnameAdminTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerCellphoneNumberAdminLbl)
-                    .addComponent(cellphoneNumberAdminTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(customerEmailAdminLbl)
-                    .addComponent(emailAdminTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 350, Short.MAX_VALUE)
-                .addComponent(confirmBtn))
-        );
+        emailAdminTF.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        getContentPane().add(emailAdminTF);
+        emailAdminTF.setBounds(690, 420, 120, 30);
+
+        ancHelpBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        ancHelpBtn.setText("Help");
+        ancHelpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ancHelpBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ancHelpBtn);
+        ancHelpBtn.setBounds(1220, 20, 60, 30);
+
+        acmImage.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        acmImage.setForeground(java.awt.Color.white);
+        acmImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\troyr\\Dropbox\\School Work\\IT\\TroyRenaudGr12PAT\\Troy_Gr_12_PAT_Images\\milad-fakurian-bexwsdM5BCw-unsplash.jpg")); // NOI18N
+        getContentPane().add(acmImage);
+        acmImage.setBounds(-1140, -160, 2700, 960);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Handles the confirm button action. It validates user input and then
+     * creates a new customer. If input is invalid, it shows a message and stops
+     * the process.
+     *
+     * @param evt the event when the confirm button is clicked
+     */
     private void confirmBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmBtnActionPerformed
+        // Extracts text from the text fields and trims spaces
         String firstname = firstnameAdminTF.getText().trim();
         String surname = surnameAdminTF.getText().trim();
         String cellphoneNumber = cellphoneNumberAdminTF.getText().trim();
         String email = emailAdminTF.getText().trim();
-        // Extracts text from the text fields and trims spaces
 
         if (firstname.isEmpty() || surname.isEmpty()) {
             JOptionPane.showMessageDialog(null, "First name and surname must be entered.");
@@ -160,7 +181,7 @@ public class AdminNewCustomerUI extends javax.swing.JFrame {
 
         if (result > 0) {
             JOptionPane.showMessageDialog(null, "Customer successfully added.");
-            SelectProductsForTabUI lp = new SelectProductsForTabUI(adminUser, currentCustomer);
+            AdminCustomerManagementUI lp = new AdminCustomerManagementUI(adminUser, currentCustomer);
             lp.setVisible(true);
             this.dispose();
         } else {
@@ -168,22 +189,62 @@ public class AdminNewCustomerUI extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_confirmBtnActionPerformed
 
-    // Utility methods for validation
+    /**
+     * Validates if the cellphone number is in the correct format. This method
+     * uses a regex pattern to ensure the number is 10 digits.
+     *
+     * @param cellphoneNumber the cellphone number to be validated
+     * @return true if the number matches the pattern, false otherwise
+     */
     private boolean isValidCellphoneNumber(String cellphoneNumber) {
         return cellphoneNumber.matches("\\d{10}");
         // Example pattern for a 10-digit number, adjust the pattern based on your requirements
     }
 
+    /**
+     * Validates if the email is in the correct format. This method uses a
+     * specific pattern to ensure a valid email format.
+     *
+     * @param email the email to be validated
+     * @return true if the email matches the pattern, false otherwise
+     */
     private boolean isValidEmail(String email) {
         return email.matches("^[A-Za-z0-9+_.-]+@(.+)$");
-        // Simple email pattern validation, you can enhance it based on your needs
     }
-    
+
+    /**
+     * Handles the back button action. It returns to the previous Customer
+     * Management UI and closes this window.
+     *
+     * @param evt the event when the back button is clicked
+     */
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
-        CustomerManagementUI cm = new CustomerManagementUI(adminUser, currentCustomer);
+        AdminCustomerManagementUI cm = new AdminCustomerManagementUI(adminUser, currentCustomer);
         cm.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_backBtnActionPerformed
+
+    /**
+     * Displays a help message dialog to guide users on how to use the
+     * AdminNewCustomerUI page.
+     *
+     * @param evt action event triggered by clicking the help button
+     */
+    private void ancHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ancHelpBtnActionPerformed
+        String helpMessage = "1. This interface allows admins to add new customers by filling in their details.\n\n"
+                + "2. The following fields are required:\n"
+                + "   - First Name: The customer's first name (mandatory).\n"
+                + "   - Surname: The customer's last name (mandatory).\n"
+                + "   - Cellphone Number: The customer's contact number (optional, but at least this or email must be provided).\n"
+                + "   - Email: The customer's email address (optional, but at least this or cellphone number must be provided).\n\n"
+                + "3. Once the required fields are filled out:\n"
+                + "   - Click the 'Confirm' button to add the customer.\n"
+                + "   - If the details are valid, the customer will be saved and you will be redirected to the product selection screen.\n\n"
+                + "4. If you need to go back to the Customer Management page without adding a customer:\n"
+                + "   - Click the 'Back' button to return to the previous screen.\n\n"
+                + "If you encounter any issues or have further questions, please contact the system administrator.";
+        JOptionPane.showMessageDialog(null, helpMessage, "Help - Add New Customer", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_ancHelpBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -221,6 +282,8 @@ public class AdminNewCustomerUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel acmImage;
+    private javax.swing.JButton ancHelpBtn;
     private javax.swing.JButton backBtn;
     private javax.swing.JTextField cellphoneNumberAdminTF;
     private javax.swing.JButton confirmBtn;

@@ -8,13 +8,18 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
+ * This class represents the login page of the application. It allows users to
+ * enter their username and password to log in. It also has options to show or
+ * hide the password. The LoginPageUI class extends JFrame to create a GUI
+ * window.
  *
  * @author troyr
  */
 public class LoginPageUI extends javax.swing.JFrame {
 
     /**
-     * Creates new form LoginPage
+     * Creates new form LoginPage This constructor initializes the form
+     * components.
      */
     public LoginPageUI() {
         initComponents();
@@ -29,46 +34,25 @@ public class LoginPageUI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        loginPageLbl = new javax.swing.JLabel();
+        passwordPF = new javax.swing.JPasswordField();
+        showPasswordCB = new javax.swing.JCheckBox();
+        lpHelpBtn = new javax.swing.JButton();
         usernameTF = new javax.swing.JTextField();
+        loginPageLbl = new javax.swing.JLabel();
         usernameLbl = new javax.swing.JLabel();
         passwordLbl = new javax.swing.JLabel();
         LoginBtn = new javax.swing.JButton();
-        passwordPF = new javax.swing.JPasswordField();
-        showPasswordCB = new javax.swing.JCheckBox();
+        lpImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        loginPageLbl.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
-        loginPageLbl.setText("Login Page");
-
-        usernameTF.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        usernameTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                usernameTFActionPerformed(evt);
-            }
-        });
-
-        usernameLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        usernameLbl.setText("Username:");
-
-        passwordLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        passwordLbl.setText("Password:");
-
-        LoginBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        LoginBtn.setText("Login");
-        LoginBtn.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                LoginBtnActionPerformed(evt);
-            }
-        });
+        setMinimumSize(new java.awt.Dimension(1315, 835));
+        setPreferredSize(new java.awt.Dimension(1300, 800));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
         passwordPF.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        passwordPF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                passwordPFActionPerformed(evt);
-            }
-        });
+        getContentPane().add(passwordPF);
+        passwordPF.setBounds(930, 450, 175, 51);
 
         showPasswordCB.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         showPasswordCB.setText("Show Password");
@@ -77,68 +61,125 @@ public class LoginPageUI extends javax.swing.JFrame {
                 showPasswordCBActionPerformed(evt);
             }
         });
+        getContentPane().add(showPasswordCB);
+        showPasswordCB.setBounds(930, 510, 130, 25);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(421, 421, 421)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(usernameLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(passwordLbl, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(73, 73, 73)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(loginPageLbl)
-                    .addComponent(usernameTF)
-                    .addComponent(passwordPF)
-                    .addComponent(showPasswordCB, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(547, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(113, 113, 113)
-                .addComponent(loginPageLbl)
-                .addGap(131, 131, 131)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(usernameTF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(usernameLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(52, 52, 52)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(passwordPF, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(passwordLbl, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(showPasswordCB, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 258, Short.MAX_VALUE)
-                .addComponent(LoginBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
+        lpHelpBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lpHelpBtn.setText("Help");
+        lpHelpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lpHelpBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(lpHelpBtn);
+        lpHelpBtn.setBounds(1230, 10, 60, 30);
+
+        usernameTF.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        getContentPane().add(usernameTF);
+        usernameTF.setBounds(930, 350, 175, 51);
+
+        loginPageLbl.setFont(new java.awt.Font("Tahoma", 1, 36)); // NOI18N
+        loginPageLbl.setForeground(new java.awt.Color(102, 255, 255));
+        loginPageLbl.setText("Login Page");
+        getContentPane().add(loginPageLbl);
+        loginPageLbl.setBounds(910, 180, 220, 60);
+
+        usernameLbl.setBackground(new java.awt.Color(255, 255, 255));
+        usernameLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        usernameLbl.setForeground(new java.awt.Color(102, 255, 255));
+        usernameLbl.setText("Username:");
+        getContentPane().add(usernameLbl);
+        usernameLbl.setBounds(780, 350, 84, 51);
+
+        passwordLbl.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        passwordLbl.setForeground(new java.awt.Color(102, 255, 255));
+        passwordLbl.setText("Password:");
+        getContentPane().add(passwordLbl);
+        passwordLbl.setBounds(780, 450, 84, 51);
+
+        LoginBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        LoginBtn.setText("Login");
+        LoginBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                LoginBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(LoginBtn);
+        LoginBtn.setBounds(1180, 740, 106, 46);
+
+        lpImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\troyr\\Dropbox\\School Work\\IT\\TroyRenaudGr12PAT\\Troy_Gr_12_PAT_Images\\LoginPageImage3.jpg")); // NOI18N
+        getContentPane().add(lpImage);
+        lpImage.setBounds(-120, 0, 1430, 800);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Action method for "Show Password" checkbox. When ticked it allows the
+     * password TextField to be visible to the user.
+     *
+     * @param evt the action event
+     */
+    private void showPasswordCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordCBActionPerformed
+        if (showPasswordCB.isSelected()) {
+            passwordPF.setEchoChar((char) 0); // Setting echo char to 0 makes it display plain text (Show password)
+        } else {
+            passwordPF.setEchoChar('•'); // (Hide password)
+        }
+        //source for method: https://www.tutorialspoint.com/how-to-set-echo-char-for-jpasswordfield-in-java
+    }//GEN-LAST:event_showPasswordCBActionPerformed
+
+    /**
+     * Displays a help message dialog to guide users on how to use the login
+     * page.
+     *
+     * @param evt action event triggered by clicking the help button
+     */
+    private void lpHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lpHelpBtnActionPerformed
+        String helpMessage = "1. This interface allows users to log in to the system.\n\n"
+        + "2. Enter your username and password in the respective fields:\n"
+        + "   - Username: Type your username.\n"
+        + "   - Password: Type your password (case-sensitive).\n\n"
+        + "3. Options:\n"
+        + "   - You can choose to display or hide the password by checking the 'Show Password' checkbox.\n"
+        + "   - Click the 'Login' button to attempt to log in.\n\n"
+        + "4. If the credentials match, you will be redirected to your respective dashboard:\n"
+        + "   - Admin Dashboard for admin users.\n"
+        + "   - User Dashboard for regular users.\n\n"
+        + "If you encounter any issues, please contact support.";
+
+        JOptionPane.showMessageDialog(null, helpMessage, "Login Page Help", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_lpHelpBtnActionPerformed
+
+    private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
+        login(); //runs the login method
+    }//GEN-LAST:event_LoginBtnActionPerformed
+
+    /**
+     * This method handles the login process. It checks if the username and
+     * password match any user in the database. If the login is successful, it
+     * opens the appropriate dashboard and closes the login page.
+     */
     private void login() {
         String username = usernameTF.getText().trim();
         String password = new String(passwordPF.getPassword()).trim();
 
         DataHandler dh = new DataHandler();
-        ArrayList<User> users = dh.getAllUsers();
+        ArrayList<User> users = dh.getAllUsers(); // Get all users from the database
         User authenticatedUser = null;
         Customer authenticatedCustomer = null;
 
-        for (User user : users) {
-            if (user.getUsername().equals(username) && user.getPassword().equals(password)) {
-                authenticatedUser = user;
-                break;
+        // Loop through users to find a match
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getUsername().equals(username) && users.get(i).getPassword().equals(password)) {
+                authenticatedUser = users.get(i);
+                break; // Exit the loop once a match is found
             }
         }
 
+        // Check if a user was authenticated
         if (authenticatedUser != null) {
+            // Open the appropriate dashboard based on user role
             if ("Admin".equalsIgnoreCase(authenticatedUser.getRole())) {
                 openAdminDashboard(authenticatedUser, authenticatedCustomer);
             } else {
@@ -150,39 +191,30 @@ public class LoginPageUI extends javax.swing.JFrame {
         }
     }
 
+    /**
+     * This method opens the admin dashboard.
+     *
+     * @param u The authenticated user
+     * @param c The authenticated customer
+     */
     private void openAdminDashboard(User u, Customer c) {
         AdminDashboardUI adminUI = new AdminDashboardUI(u, c);
         adminUI.setVisible(true);
         this.dispose();
     }
 
+    /**
+     * This method opens the user dashboard.
+     *
+     * @param u The authenticated user
+     * @param c The authenticated customer
+     */
     private void openUserDashboard(User u, Customer c) {
         CustomerSelectionUI userUI = new CustomerSelectionUI(u, c);
         userUI.setVisible(true);
         this.dispose();
     }
-
-    private void LoginBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_LoginBtnActionPerformed
-        login();
-    }//GEN-LAST:event_LoginBtnActionPerformed
-
-    private void showPasswordCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_showPasswordCBActionPerformed
-        if (showPasswordCB.isSelected()) {
-            passwordPF.setEchoChar((char) 0); // Setting echo char to 0 makes it display plain text (Show password)
-        } else {
-            passwordPF.setEchoChar('•'); // (Hide password)
-        }
-        //source for method: https://www.tutorialspoint.com/how-to-set-echo-char-for-jpasswordfield-in-java
-    }//GEN-LAST:event_showPasswordCBActionPerformed
-
-    private void passwordPFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordPFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_passwordPFActionPerformed
-
-    private void usernameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_usernameTFActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
@@ -209,7 +241,6 @@ public class LoginPageUI extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(LoginPageUI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -222,6 +253,8 @@ public class LoginPageUI extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton LoginBtn;
     private javax.swing.JLabel loginPageLbl;
+    private javax.swing.JButton lpHelpBtn;
+    private javax.swing.JLabel lpImage;
     private javax.swing.JLabel passwordLbl;
     private javax.swing.JPasswordField passwordPF;
     private javax.swing.JCheckBox showPasswordCB;

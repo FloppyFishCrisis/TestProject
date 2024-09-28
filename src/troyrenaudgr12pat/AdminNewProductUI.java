@@ -4,20 +4,22 @@
  */
 package troyrenaudgr12pat;
 
-import java.time.LocalDate;
 import javax.swing.JOptionPane;
 
 /**
- *
- * @author troyr
+ * This class is for the Admin to add new products through the UI.
  */
 public class AdminNewProductUI extends javax.swing.JFrame {
-    
+
     private User adminUser;
     private Customer currentCustomer;
 
     /**
-     * Creates new form AdminNewProduct
+     * This is the AdminNewProductUI class for creating a new product. It takes
+     * two parameters: adminUser for user details and c for customer info.
+     *
+     * @param adminUser the admin who is logged in
+     * @param c the customer that will be assigned the product
      */
     public AdminNewProductUI(User adminUser, Customer c) {
         initComponents();
@@ -25,13 +27,17 @@ public class AdminNewProductUI extends javax.swing.JFrame {
         currentCustomer = c;
         populateCategoryComboBox();
     }
-    
+
+    /**
+     * Populates the category combo box with product types. Adds preset
+     * categories for the user to choose from.
+     */
     private void populateCategoryComboBox() {
-        String[] categories = {"Buns & Rolls", "Burgers", "Pizzas", "Toasted Sandwiches", "Snacks"};
+        String[] categories = {"Buns & Rolls", "Burgers", "Pizzas", "Toasted Sandwiches", "Snacks", "Other"};
 
         // Add categories to comboBox
-        for (String category : categories) {
-            categoryComboBox.addItem(category);
+        for (int i = 0; i < categories.length; i++) {
+            categoryComboBox.addItem(categories[i]);  // Add each category to the combo box
         }
     }
 
@@ -48,166 +54,119 @@ public class AdminNewProductUI extends javax.swing.JFrame {
         newBarcode = new javax.swing.JLabel();
         newPrice = new javax.swing.JLabel();
         newBarcodeTF = new javax.swing.JTextField();
-        newQuantity = new javax.swing.JLabel();
         newProductNameTF = new javax.swing.JTextField();
-        newExpiryDate = new javax.swing.JLabel();
-        newExpiryDatePicker = new com.github.lgooddatepicker.components.DatePicker();
         newPriceTF = new javax.swing.JTextField();
         btnBack = new javax.swing.JButton();
-        newQuantityTF = new javax.swing.JTextField();
         insertButton1 = new javax.swing.JButton();
         newProductName = new javax.swing.JLabel();
         categoryComboBox = new javax.swing.JComboBox<>();
+        anpHelpBtn = new javax.swing.JButton();
+        anpImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1315, 835));
+        setPreferredSize(new java.awt.Dimension(1300, 800));
+        setResizable(false);
+        getContentPane().setLayout(null);
 
         newCategory.setText("Category:");
+        newCategory.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        newCategory.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(newCategory);
+        newCategory.setBounds(530, 330, 69, 17);
 
         newBarcode.setText("Barcode:");
+        newBarcode.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        newBarcode.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(newBarcode);
+        newBarcode.setBounds(540, 380, 62, 17);
 
         newPrice.setText("Price:");
+        newPrice.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        newPrice.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(newPrice);
+        newPrice.setBounds(560, 430, 38, 17);
+        getContentPane().add(newBarcodeTF);
+        newBarcodeTF.setBounds(640, 370, 150, 30);
+        getContentPane().add(newProductNameTF);
+        newProductNameTF.setBounds(641, 273, 150, 30);
+        getContentPane().add(newPriceTF);
+        newPriceTF.setBounds(640, 420, 150, 30);
 
-        newBarcodeTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newBarcodeTFActionPerformed(evt);
-            }
-        });
-
-        newQuantity.setText("Quantity:");
-
-        newProductNameTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newProductNameTFActionPerformed(evt);
-            }
-        });
-
-        newExpiryDate.setText("Expiry Date:");
-
-        btnBack.setText("←");
         btnBack.setBackground(new java.awt.Color(204, 204, 255));
+        btnBack.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btnBack.setText("Back");
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
             }
         });
+        getContentPane().add(btnBack);
+        btnBack.setBounds(20, 20, 70, 30);
 
-        newQuantityTF.setToolTipText("ISBN Format: ISBN-XX XXX-X-XXXXX-XXX-X");
-        newQuantityTF.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newQuantityTFActionPerformed(evt);
-            }
-        });
-
-        insertButton1.setText("Insert");
-        insertButton1.setBackground(new java.awt.Color(255, 153, 0));
+        insertButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        insertButton1.setText("Confirm");
         insertButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 insertButton1ActionPerformed(evt);
             }
         });
+        getContentPane().add(insertButton1);
+        insertButton1.setBounds(1160, 730, 120, 50);
 
         newProductName.setText("Product Name:");
+        newProductName.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        newProductName.setForeground(new java.awt.Color(255, 255, 255));
+        getContentPane().add(newProductName);
+        newProductName.setBounds(500, 280, 110, 17);
 
-        categoryComboBox.addActionListener(new java.awt.event.ActionListener() {
+        getContentPane().add(categoryComboBox);
+        categoryComboBox.setBounds(641, 321, 150, 30);
+
+        anpHelpBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        anpHelpBtn.setText("Help");
+        anpHelpBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                categoryComboBoxActionPerformed(evt);
+                anpHelpBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(anpHelpBtn);
+        anpHelpBtn.setBounds(1220, 20, 60, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(1239, Short.MAX_VALUE)
-                .addComponent(insertButton1))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(506, 506, 506)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(newExpiryDate)
-                            .addComponent(newQuantity)
-                            .addComponent(newPrice)
-                            .addComponent(newBarcode)
-                            .addComponent(newCategory)
-                            .addComponent(newProductName))
-                        .addGap(64, 64, 64)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(newQuantityTF)
-                            .addComponent(newExpiryDatePicker, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(newPriceTF)
-                            .addComponent(newBarcodeTF)
-                            .addComponent(newProductNameTF)
-                            .addComponent(categoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(btnBack)
-                .addGap(260, 260, 260)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newProductNameTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newProductName))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newCategory)
-                    .addComponent(categoryComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newBarcode)
-                    .addComponent(newBarcodeTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newPrice)
-                    .addComponent(newPriceTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newQuantity)
-                    .addComponent(newQuantityTF, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(newExpiryDate)
-                    .addComponent(newExpiryDatePicker, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 289, Short.MAX_VALUE)
-                .addComponent(insertButton1))
-        );
+        anpImage.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        anpImage.setForeground(java.awt.Color.white);
+        anpImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\troyr\\Dropbox\\School Work\\IT\\TroyRenaudGr12PAT\\Troy_Gr_12_PAT_Images\\milad-fakurian-bexwsdM5BCw-unsplash.jpg")); // NOI18N
+        getContentPane().add(anpImage);
+        anpImage.setBounds(-1140, -160, 2700, 960);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newBarcodeTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newBarcodeTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newBarcodeTFActionPerformed
-
-    private void newProductNameTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newProductNameTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newProductNameTFActionPerformed
-
+    /**
+     * Back button action. Takes the user back to the product management UI.
+     *
+     * @param evt the event triggered when the button is clicked
+     */
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        ProductManagementUI pm = new ProductManagementUI(adminUser, currentCustomer);
+        AdminProductManagementUI pm = new AdminProductManagementUI(adminUser, currentCustomer);
         pm.setVisible(true);
         this.dispose();
-        // Handle the action when the "Back" button is clicked.
-        // It opens the LandingPageUI and closes the current window.
     }//GEN-LAST:event_btnBackActionPerformed
 
-    private void newQuantityTFActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newQuantityTFActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_newQuantityTFActionPerformed
-
+    /**
+     * Insert button action. Validates the fields and inserts a new product.
+     *
+     * @param evt the event triggered when the button is clicked
+     */
     private void insertButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertButton1ActionPerformed
         String pn = newProductNameTF.getText().trim();
         String category = (String) categoryComboBox.getSelectedItem();
         String barcode = newBarcodeTF.getText().trim();
         String priceText = newPriceTF.getText().trim();
-        String quantityText = newQuantityTF.getText().trim();
         // Extracts text from different text fields and stores it in separate String variables.
         // .trim helps .isEmpty to work by trimming spaces and seeing if values were left out.
 
-        if (pn.isEmpty() || category.isEmpty() || barcode.isEmpty() || priceText.isEmpty() || quantityText.isEmpty()) {
+        if (pn.isEmpty() || category.isEmpty() || barcode.isEmpty() || priceText.isEmpty()) {
             JOptionPane.showMessageDialog(null, "All text fields must be entered.");
             return;
         }
@@ -222,57 +181,75 @@ public class AdminNewProductUI extends javax.swing.JFrame {
             // Ensures that the price entered is in the correct format and displays a message if it isn't.
         }
 
-        int quantity;
-        try {
-            quantity = Integer.parseInt(quantityText);
-        } catch (NumberFormatException e) {
-            JOptionPane.showMessageDialog(null, "Invalid quantity format. Please enter a valid integer.");
-            return;
-            // Ensures that the quantity entered is in the correct format and displays a message if it isn't.
-        }
+        Product newProduct = new Product(pn, category, barcode, price);
 
-        LocalDate publicationDate = newExpiryDatePicker.getDate();
-        Product newProduct = new Product(pn, category, barcode, price, quantity, publicationDate);
-        // Updates the current edited data.
+//            // Runs the isValidBarcode code and returns a message if false.
+//            //the user can create their own barcode therefore there is no need for a validation check
+//            // I have left the barcode as a string because it is up to the program user to decide on what their barcode is. They are even able to put text into a barcode generator.
+//        if (!isValidBarcode(barcode)) {
+//            JOptionPane.showMessageDialog(null, "Invalid barcode format. Please enter a valid barcode.");
+//            return;
+//        }
 
-        if (!isValidBarcode(barcode)) {
-            JOptionPane.showMessageDialog(null, "Invalid barcode format. Please enter a valid barcode.");
-            return;
-            // Runs the isValidBarcode code and returns a message if false.
-        }
-
-        // Insert the new Book using BookHandler.
         DataHandler dh = new DataHandler();
-        dh.insertNewProduct(newProduct);
+        int result = dh.insertNewProduct(newProduct);
+        
+        if (result > 0) { //if a new user was entered correctly the result will be > 0 therefore it can execute this code
+            JOptionPane.showMessageDialog(null, "Product successfully added.");
+            AdminProductManagementUI apm = new AdminProductManagementUI(adminUser, currentCustomer);
+            apm.setVisible(true);
+            this.dispose();
+            } else { // if user is not entered correctly, this message dialog will be displayed
+            JOptionPane.showMessageDialog(null, "Error adding product. Please try again.");
+        }
 
-        clearTextFields(); // Clears the text fields.
+        clearTextFields();
     }//GEN-LAST:event_insertButton1ActionPerformed
 
-    private void categoryComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryComboBoxActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_categoryComboBoxActionPerformed
+    /**
+     * Displays a help message dialog to guide users on how to use the Admin New
+     * Product UI.
+     *
+     * @param evt action event triggered by clicking the help button
+     */
+    private void anpHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_anpHelpBtnActionPerformed
+        String helpMessage = "1. This interface allows the admin to add new products to the system.\n\n"
+                + "2. To add a new product:\n"
+                + "   - Enter the product name in the 'Product Name' field.\n"
+                + "   - Select the appropriate category from the 'Category' dropdown.\n"
+                + "   - Enter the product's barcode in the 'Barcode' field.\n"
+                + "   - Enter the price of the product in the 'Price' field.\n\n"
+                + "3. Once all fields are completed, click the 'Insert' button to add the product to the system.\n\n"
+                + "4. If you wish to return to the previous screen, click the 'Back' button.\n\n"
+                + "If you need further assistance, please contact support.";
 
+        JOptionPane.showMessageDialog(null, helpMessage, "Admin New Product Help", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_anpHelpBtnActionPerformed
+
+    /**
+     * Method to reset all input fields to blank. Clears the text fields and
+     * resets the combo box.
+     */
     private void clearTextFields() {
         newProductNameTF.setText("");
         categoryComboBox.setSelectedItem(null);
         newBarcodeTF.setText("");
         newPriceTF.setText("");
-        newQuantityTF.setText("");
-        newExpiryDatePicker.setDate(null);
-        // Method to reset the values of text fields.
     }
 
-    private boolean isValidBarcode(String barcode) {
-        return barcode.matches("\\d{12}");
-        // Ensures the barcode is in the correct format and contains no letters.
-        // Reference: https://stackoverflow.com/questions/21426481/what-does-the-regex-d3-d-mean
-    }
+//    private boolean isValidBarcode(String barcode) {
+//        long b = Long.parseLong(barcode);
+//        return barcode.length() <= 12;
+//        //This method validates the barcode entry to ensure that the barcode is 12 digits or less and it makes sure it is an integer.
+//        
+//        // return barcode.matches("\\d{12}");
+//        // Ensures the barcode is in the correct format and contains no letters.
+//        // Reference: https://stackoverflow.com/questions/21426481/what-does-the-regex-d3-d-mean
+//    
+//        //the user can create their own barcode therefore there is no need for a validation check
+//        // I have left the barcode as a string because it is up to the program user to decide on what their barcode is. They are even able to put text into a barcode generator.
+//    }
 
-    private void helpButton3ActionPerformed(java.awt.event.ActionEvent evt) {
-        JOptionPane.showMessageDialog(null, "- Type values in the blocks" + "\n" + "- Then click Insert to create a product on the system");
-        // Creates a message box that helps the user with what the page does.
-    }
-    
     /**
      * @param args the command line arguments
      */
@@ -310,19 +287,17 @@ public class AdminNewProductUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton anpHelpBtn;
+    private javax.swing.JLabel anpImage;
     private javax.swing.JButton btnBack;
     private javax.swing.JComboBox<String> categoryComboBox;
     private javax.swing.JButton insertButton1;
     private javax.swing.JLabel newBarcode;
     private javax.swing.JTextField newBarcodeTF;
     private javax.swing.JLabel newCategory;
-    private javax.swing.JLabel newExpiryDate;
-    private com.github.lgooddatepicker.components.DatePicker newExpiryDatePicker;
     private javax.swing.JLabel newPrice;
     private javax.swing.JTextField newPriceTF;
     private javax.swing.JLabel newProductName;
     private javax.swing.JTextField newProductNameTF;
-    private javax.swing.JLabel newQuantity;
-    private javax.swing.JTextField newQuantityTF;
     // End of variables declaration//GEN-END:variables
 }

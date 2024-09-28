@@ -4,17 +4,26 @@
  */
 package troyrenaudgr12pat;
 
+import javax.swing.JOptionPane;
+
 /**
+ * This is the Customer Selection User Interface class. It allows the user to
+ * select options related to customers.
  *
- * @author troyr
+ * It has buttons to view new or previous customers, collections, or kitchen
+ * display.
  */
 public class CustomerSelectionUI extends javax.swing.JFrame {
 
     private User currentUser;
     private Customer currentCustomer;
-    
+
     /**
-     * Creates new form TabSelection
+     * Constructor for CustomerSelectionUI. Initializes the form with the given
+     * user and customer.
+     *
+     * @param u the user
+     * @param c the customer
      */
     public CustomerSelectionUI(User u, Customer c) {
         initComponents();
@@ -34,8 +43,17 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
         newCustomerBtn = new javax.swing.JButton();
         previousCustomerBtn = new javax.swing.JButton();
         backBtn = new javax.swing.JButton();
+        collectionsBtn = new javax.swing.JButton();
+        kitchenDisplayBtn = new javax.swing.JButton();
+        csHelpBtn = new javax.swing.JButton();
+        csImage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(1315, 835));
+        setPreferredSize(new java.awt.Dimension(1300, 800));
+        setResizable(false);
+        setSize(new java.awt.Dimension(1300, 800));
+        getContentPane().setLayout(null);
 
         newCustomerBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         newCustomerBtn.setText("New Customer");
@@ -44,6 +62,8 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
                 newCustomerBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(newCustomerBtn);
+        newCustomerBtn.setBounds(520, 100, 290, 100);
 
         previousCustomerBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         previousCustomerBtn.setText("Previous Customer");
@@ -52,62 +72,139 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
                 previousCustomerBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(previousCustomerBtn);
+        previousCustomerBtn.setBounds(520, 220, 290, 100);
 
+        backBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         backBtn.setText("Back");
         backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 backBtnActionPerformed(evt);
             }
         });
+        getContentPane().add(backBtn);
+        backBtn.setBounds(20, 20, 70, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(backBtn)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(0, 532, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(previousCustomerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 227, Short.MAX_VALUE)
-                    .addComponent(newCustomerBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap(541, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(backBtn)
-                .addGap(256, 256, 256)
-                .addComponent(newCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
-                .addComponent(previousCustomerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(322, Short.MAX_VALUE))
-        );
+        collectionsBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        collectionsBtn.setText("Collections");
+        collectionsBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                collectionsBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(collectionsBtn);
+        collectionsBtn.setBounds(520, 590, 290, 100);
+
+        kitchenDisplayBtn.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        kitchenDisplayBtn.setText("Kitchen Display");
+        kitchenDisplayBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                kitchenDisplayBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(kitchenDisplayBtn);
+        kitchenDisplayBtn.setBounds(520, 470, 290, 100);
+
+        csHelpBtn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        csHelpBtn.setText("Help");
+        csHelpBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                csHelpBtnActionPerformed(evt);
+            }
+        });
+        getContentPane().add(csHelpBtn);
+        csHelpBtn.setBounds(1210, 20, 60, 30);
+
+        csImage.setIcon(new javax.swing.ImageIcon("C:\\Users\\troyr\\Dropbox\\School Work\\IT\\TroyRenaudGr12PAT\\Troy_Gr_12_PAT_Images\\faded_gallery-7stSlxNAmfc-unsplash.jpg")); // NOI18N
+        csImage.setToolTipText("");
+        getContentPane().add(csImage);
+        csImage.setBounds(0, 0, 1300, 800);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * Action method for "New Customer" button. Opens the NewCustomerUI window
+     * and closes this window.
+     *
+     * @param evt the action event
+     */
     private void newCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newCustomerBtnActionPerformed
         NewCustomerUI nc = new NewCustomerUI(currentUser, currentCustomer);
         nc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_newCustomerBtnActionPerformed
 
+    /**
+     * Action method for "Previous Customer" button. Opens the
+     * PreviousCustomerUI window and closes this window.
+     *
+     * @param evt the action event
+     */
     private void previousCustomerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previousCustomerBtnActionPerformed
         PreviousCustomerUI pc = new PreviousCustomerUI(currentUser, currentCustomer);
         pc.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_previousCustomerBtnActionPerformed
 
+    /**
+     * Action method for "Back" button. Opens the LoginPageUI window and closes
+     * this window.
+     *
+     * @param evt the action event
+     */
     private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         LoginPageUI lp1 = new LoginPageUI();
         lp1.setVisible(true);
         this.dispose();
-        // Handle the action when the "Back" button is clicked.
-        // It opens the LandingPageUI and closes the current window.
     }//GEN-LAST:event_backBtnActionPerformed
+
+    /**
+     * Action method for "Collections" button. Opens the CollectionsUI window
+     * and closes this window.
+     *
+     * @param evt the action event
+     */
+    private void collectionsBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_collectionsBtnActionPerformed
+        CollectionsUI c = new CollectionsUI(currentUser, currentCustomer);
+        c.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_collectionsBtnActionPerformed
+
+    /**
+     * Action method for "Kitchen Display" button. Opens the KitchenDisplayUI
+     * window and closes this window.
+     *
+     * @param evt the action event
+     */
+    private void kitchenDisplayBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_kitchenDisplayBtnActionPerformed
+        KitchenDisplayUI kd = new KitchenDisplayUI(currentUser, currentCustomer);
+        kd.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_kitchenDisplayBtnActionPerformed
+
+    /**
+     * Displays a help message dialog to guide users on how to use the customer
+     * selection interface.
+     *
+     * @param evt action event triggered by clicking the help button
+     */
+    private void csHelpBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_csHelpBtnActionPerformed
+        String helpMessage = "Welcome to the Customer Selection Interface!\n\n"
+                + "1. This interface allows you to manage customer interactions.\n\n"
+                + "2. Available Options:\n"
+                + "   - **New Customer**: Click this button to add a new customer to the system.\n"
+                + "   - **Previous Customer**: Select this option to view or manage previous customers.\n"
+                + "   - **Collections**: Use this to access the collections management interface.\n"
+                + "   - **Kitchen Display**: This option opens the kitchen display interface for order management.\n\n"
+                + "3. Navigation:\n"
+                + "   - To return to the previous screen, click the 'Back' button.\n\n"
+                + "4. Help:\n"
+                + "   - For assistance, you can click the 'Help' button at any time to view this message.\n\n"
+                + "If you have further questions, please consult the user manual or contact support.";
+
+        JOptionPane.showMessageDialog(null, helpMessage, "Customer Selection Help", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_csHelpBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -149,6 +246,10 @@ public class CustomerSelectionUI extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backBtn;
+    private javax.swing.JButton collectionsBtn;
+    private javax.swing.JButton csHelpBtn;
+    private javax.swing.JLabel csImage;
+    private javax.swing.JButton kitchenDisplayBtn;
     private javax.swing.JButton newCustomerBtn;
     private javax.swing.JButton previousCustomerBtn;
     // End of variables declaration//GEN-END:variables
